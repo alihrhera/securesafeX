@@ -1,0 +1,17 @@
+# Only the static site is versioned here (served by GitHub Pages from the repo root).
+
+# 3D source workspace: model authoring, build tools, node_modules
+/3d/
+
+# Source / reference artwork not loaded by the page
+/assets/logo.png
+/assets/blueprint.png
+/assets/layers.png
+
+# Previous hero viewer bundle (index.html loads securex-scroll.js)
+/assets/3d/securex-viewer.js
+
+# Editor / OS noise
+.DS_Store
+.vscode/
+*.swp
