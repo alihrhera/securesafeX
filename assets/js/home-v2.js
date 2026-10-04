@@ -1,26 +1,27 @@
 /* ===================== CONFIG ===================== */
 const CONFIG = {
-    // POST endpoint for signups (Formspree, Google Apps Script web app, Supabase function, etc.).
-    // Leave empty to keep signups in localStorage only (for local testing).
-    endpoint: "",
+    // Waitlist API (server/). Local preview talks to `npm start` on port 8787; set the deployed URL
+    // for production, e.g. "https://api.example.com/api/waitlist". Empty = keep signups in this browser only.
+    endpoint: ["localhost", "127.0.0.1"].includes(location.hostname) ? "http://localhost:8787/api/waitlist" : "",
     variants: ["privacy", "security", "ease"]
 };
 
 /* ===================== COPY (EN / AR) ===================== */
 const I18N = {
     en: {
-        "meta.title": "SecureX: the password manager you can hold",
+        "meta.title": "SecureSafeX: the password manager you can hold",
         "meta.desc": "A pocket-sized hardware password manager. Your vault stays encrypted on the device: offline, no account, no cloud. Join the waitlist.",
         "lang.switch": "التبديل إلى العربية", "lang.label": "عربي",
+        "theme.toLight": "Switch to light mode", "theme.toDark": "Switch to dark mode",
         "nav.cta": "Join the waitlist",
         "hero.eyebrow": "pre-launch · first batch",
         "hero.h1.privacy": "Your passwords belong in your pocket, not someone's cloud.",
-        "hero.sub.privacy": "SecureX is a pocket-sized password manager that keeps your vault encrypted on the device itself: offline, with no account, and out of reach of any server breach.",
+        "hero.sub.privacy": "SecureSafeX is a pocket-sized password manager that keeps your vault encrypted on the device itself: offline, with no account, and out of reach of any server breach.",
         "hero.h1.security": "A password vault hackers can't reach over the internet.",
         "hero.sub.security": "Your vault stays encrypted inside a dedicated device, and you enter your PIN on the device, not your computer. Malware can't log your PIN, and there's no server to leak.",
         "hero.h1.ease": "Press one button and your password types itself.",
-        "hero.sub.ease": "Plug in SecureX, pick an account, and press. It types your login like a keyboard. Bring your passwords over from your current manager in minutes, with no subscription, no account, and no cloud.",
-        "hero.alt": "The SecureX device: a slim metal USB-C unit with a small screen showing a menu and four navigation buttons",
+        "hero.sub.ease": "Plug in SecureSafeX, pick an account, and press. It types your login like a keyboard. Bring your passwords over from your current manager in minutes, with no subscription, no account, and no cloud.",
+        "hero.alt": "The SecureSafeX device: a slim metal USB-C unit with a small screen showing a menu and four navigation buttons",
         "hero.tag": "working prototype",
         "scroll.hint": "scroll to look inside",
         "scroll.1.k": "01 · shell",
@@ -28,7 +29,7 @@ const I18N = {
         "scroll.1.p": "You unlock it and confirm each login on the device itself, not on your computer.",
         "scroll.2.k": "02 · main board",
         "scroll.2.h": "Types for you over USB-C",
-        "scroll.2.p": "Plugged in, SecureX acts like a keyboard and types the login you picked.",
+        "scroll.2.p": "Plugged in, SecureSafeX acts like a keyboard and types the login you picked.",
         "scroll.3.k": "03 · secure chip",
         "scroll.3.h": "Your vault lives here",
         "scroll.3.p": "Your passwords stay encrypted on the device. No account, no copy on a server.",
@@ -53,7 +54,7 @@ const I18N = {
         "how.screen": "Device screen showing a list of accounts with one selected, and a 2FA code",
         "how.eyebrow": "the alternative",
         "how.h2": "A password vault you can hold in your hand",
-        "how.lead": "SecureX is a small USB-C device that stores your passwords and 2FA codes encrypted on the device itself. There's no server, no account, and nothing to sync.",
+        "how.lead": "SecureSafeX is a small USB-C device that stores your passwords and 2FA codes encrypted on the device itself. There's no server, no account, and nothing to sync.",
         "how.s1.h": "Unlock it on the device", "how.s1.p": "You enter your PIN with the device's own buttons, so your computer never sees it.",
         "how.s2.h": "Pick the account", "how.s2.p": "Scroll to the login you need on the built-in screen.",
         "how.s3.h": "Press, and it types for you", "how.s3.p": "The device acts as a USB keyboard and types the username, the password, or both. No drivers, no app.",
@@ -74,7 +75,7 @@ const I18N = {
         "yes": "Yes", "no": "No",
         "open.eyebrow": "built in the open",
         "open.h2": "The prototype already works. We're building the real thing.",
-        "open.lead": "SecureX started as a maker project on the ESP32-S3. Anyone can read the firmware. Your signup tells us whether to turn it into a finished, enclosed product.",
+        "open.lead": "SecureSafeX started as a maker project on the ESP32-S3. Anyone can read the firmware. Your signup tells us whether to turn it into a finished, enclosed product.",
         "open.s1": "Dedicated chip with hardware-accelerated encryption", "open.s2": "Shows up as a keyboard. No drivers needed.", "open.s3": "Generates your 2FA codes on the device", "open.s4b": "Readable code", "open.s4": "The firmware is public, so you can check it yourself",
         "open.video": "Watch the prototype demo",
         "faq.eyebrow": "questions", "faq.h2": "The questions people ask first",
@@ -84,12 +85,12 @@ const I18N = {
         "faq.q4": "Will it work with my phone?", "faq.a4": "It should work with anything that accepts a USB keyboard: Windows, macOS, Linux, and many Android phones and iPads with USB-C. We're testing compatibility now, and Bluetooth is on the roadmap.",
         "faq.q5": "Why should I trust a new device?", "faq.a5": "You shouldn't have to take our word for it. The firmware is public, so you or anyone you trust can read it. The design also removes the biggest risk on purpose: there's no server holding your data, so there's nothing for us to leak.",
         "faq.q6": "How much will it cost, and when will it ship?", "faq.a6": "We haven't set a price yet. What you tell us in the signup form will shape it. It will be a one-time purchase with no subscription, and people on the waitlist get first access to the first batch.",
-        "join.eyebrow": "first batch", "join.h2": "Be first in line for SecureX",
+        "join.eyebrow": "first batch", "join.h2": "Be first in line for SecureSafeX",
         "join.lead": "Join the waitlist and we'll email you once, when the first batch is ready. No spam, and you can unsubscribe anytime.",
-        "footer.by": "by Dr. Maker", "footer.privacy": "We only use your email for this waitlist. We never sell or share it.",
+        "footer.by": "by Ali Hrhera", "footer.privacy": "We only use your email for this waitlist. We never sell or share it.",
         "form.label": "Email address", "form.ph": "you@example.com", "form.btn": "Join the waitlist", "form.sending": "Joining…",
         "form.note": "Free to join. We'll email you once, when it ships.",
-        "form.err": "Please enter a valid email address.", "form.err.net": "Something went wrong. Please try again.",
+        "form.err": "Please enter a valid email address.", "form.err.net": "Something went wrong. Please try again.", "form.err.rate": "Too many attempts. Please wait a few minutes and try again.",
         "s2.title": "You're on the list.", "s2.sub": "Want to help shape it? These 4 questions are optional and take about 20 seconds.",
         "s2.q1": "Which of these best describes you?", "s2.q1.a": "I care a lot about privacy", "s2.q1.b": "I manage many work accounts", "s2.q1.c": "Developer / maker", "s2.q1.d": "I just want something simple", "s2.q1.e": "Buying for family or a team",
         "s2.q2": "Which features would you use? (pick any)", "s2.q2.a": "Offline vault", "s2.q2.b": "Auto-typing passwords", "s2.q2.c": "2FA codes", "s2.q2.d": "Import from my manager", "s2.q2.e": "Browser extension", "s2.q2.f": "Backup to a 2nd device", "s2.q2.g": "Bluetooth for phones",
@@ -98,18 +99,19 @@ const I18N = {
         "s2.btn": "Send answers", "s2.done": "Thank you! This helps a lot."
     },
     ar: {
-        "meta.title": "SecureX: مدير كلمات المرور الذي تحمله في يدك",
+        "meta.title": "SecureSafeX: مدير كلمات المرور الذي تحمله في يدك",
         "meta.desc": "مدير كلمات مرور عتادي بحجم الجيب. خزنتك تبقى مشفّرة داخل الجهاز: بلا إنترنت، بلا حساب، بلا سحابة. انضم إلى قائمة الانتظار.",
         "lang.switch": "Switch to English", "lang.label": "EN",
+        "theme.toLight": "التبديل إلى الوضع الفاتح", "theme.toDark": "التبديل إلى الوضع الداكن",
         "nav.cta": "انضم إلى قائمة الانتظار",
         "hero.eyebrow": "قبل الإطلاق · الدفعة الأولى",
         "hero.h1.privacy": "كلمات مرورك في جيبك، لا على سحابة أحد.",
-        "hero.sub.privacy": "SecureX جهاز بحجم الجيب يحفظ خزنة كلمات مرورك مشفّرة داخله. يعمل دون إنترنت، ودون حساب، وبعيدًا عن أي اختراق للخوادم.",
+        "hero.sub.privacy": "SecureSafeX جهاز بحجم الجيب يحفظ خزنة كلمات مرورك مشفّرة داخله. يعمل دون إنترنت، ودون حساب، وبعيدًا عن أي اختراق للخوادم.",
         "hero.h1.security": "خزنة كلمات مرور لا يصلها المخترقون عبر الإنترنت.",
         "hero.sub.security": "خزنتك تبقى مشفّرة داخل جهاز مخصّص، وتُدخل رمزك السري على الجهاز نفسه لا على حاسوبك. فلا تستطيع البرامج الخبيثة التقاطه، ولا يوجد خادم يمكن أن يُسرَّب منه شيء.",
         "hero.h1.ease": "ضغطة زر واحدة، وتُكتب كلمة المرور تلقائيًا.",
-        "hero.sub.ease": "وصّل SecureX، واختر الحساب، ثم اضغط؛ فيكتب بيانات الدخول كأنه لوحة مفاتيح. وانقل كلمات مرورك من مديرك الحالي في دقائق، دون اشتراك أو حساب أو سحابة.",
-        "hero.alt": "جهاز SecureX: جهاز معدني نحيف بمنفذ USB-C وشاشة صغيرة تعرض قائمة، وأربعة أزرار للتنقل",
+        "hero.sub.ease": "وصّل SecureSafeX، واختر الحساب، ثم اضغط؛ فيكتب بيانات الدخول كأنه لوحة مفاتيح. وانقل كلمات مرورك من مديرك الحالي في دقائق، دون اشتراك أو حساب أو سحابة.",
+        "hero.alt": "جهاز SecureSafeX: جهاز معدني نحيف بمنفذ USB-C وشاشة صغيرة تعرض قائمة، وأربعة أزرار للتنقل",
         "hero.tag": "نموذج أولي يعمل فعليًا",
         "scroll.hint": "مرّر لترى ما بالداخل",
         "scroll.1.k": "01 · الهيكل",
@@ -117,7 +119,7 @@ const I18N = {
         "scroll.1.p": "تفتح القفل وتؤكد كل تسجيل دخول على الجهاز نفسه، لا على حاسوبك.",
         "scroll.2.k": "02 · اللوحة الرئيسية",
         "scroll.2.h": "يكتب عنك عبر USB-C",
-        "scroll.2.p": "عند توصيله، يعمل SecureX كلوحة مفاتيح ويكتب بيانات الدخول التي اخترتها.",
+        "scroll.2.p": "عند توصيله، يعمل SecureSafeX كلوحة مفاتيح ويكتب بيانات الدخول التي اخترتها.",
         "scroll.3.k": "03 · الشريحة الآمنة",
         "scroll.3.h": "هنا تعيش خزنتك",
         "scroll.3.p": "تبقى كلمات مرورك مشفّرة على الجهاز. لا حساب، ولا نسخة على أي خادم.",
@@ -142,7 +144,7 @@ const I18N = {
         "how.screen": "شاشة الجهاز تعرض قائمة حسابات مع تحديد أحدها ورمز تحقق ثنائي",
         "how.eyebrow": "البديل",
         "how.h2": "خزنة كلمات مرور تحملها في يدك",
-        "how.lead": "SecureX جهاز صغير بمنفذ USB-C يحفظ كلمات مرورك ورموز التحقق الثنائي مشفّرة داخله. لا خادم، ولا حساب، ولا شيء يُزامَن.",
+        "how.lead": "SecureSafeX جهاز صغير بمنفذ USB-C يحفظ كلمات مرورك ورموز التحقق الثنائي مشفّرة داخله. لا خادم، ولا حساب، ولا شيء يُزامَن.",
         "how.s1.h": "افتحه من الجهاز نفسه", "how.s1.p": "تُدخل رمزك السري (PIN) بأزرار الجهاز، فلا يراه حاسوبك أبدًا.",
         "how.s2.h": "اختر الحساب", "how.s2.p": "تنقّل إلى الحساب الذي تريده على الشاشة المدمجة.",
         "how.s3.h": "اضغط، ودَعه يكتب عنك", "how.s3.p": "يعمل الجهاز كلوحة مفاتيح USB ويكتب اسم المستخدم أو كلمة المرور أو كليهما، دون تعريفات أو تطبيقات.",
@@ -163,7 +165,7 @@ const I18N = {
         "yes": "نعم", "no": "لا",
         "open.eyebrow": "نبنيه بشفافية",
         "open.h2": "النموذج الأولي يعمل الآن، ونحن نبني المنتج النهائي.",
-        "open.lead": "بدأ SecureX مشروعًا مستقلًا على شريحة ESP32-S3، وبرنامجه الثابت متاح لأي شخص للاطلاع عليه. وتسجيلك هو ما يخبرنا إن كان علينا تحويله إلى منتج نهائي متكامل.",
+        "open.lead": "بدأ SecureSafeX مشروعًا مستقلًا على شريحة ESP32-S3، وبرنامجه الثابت متاح لأي شخص للاطلاع عليه. وتسجيلك هو ما يخبرنا إن كان علينا تحويله إلى منتج نهائي متكامل.",
         "open.s1": "شريحة مخصّصة مع تشفير مسرَّع عتاديًا", "open.s2": "يتعرّف عليه الحاسوب كلوحة مفاتيح، دون تعريفات", "open.s3": "يولّد رموز التحقق الثنائي على الجهاز", "open.s4b": "كود مقروء", "open.s4": "البرنامج الثابت منشور، فتستطيع مراجعته بنفسك",
         "open.video": "شاهد عرض النموذج الأولي",
         "faq.eyebrow": "أسئلة", "faq.h2": "أكثر الأسئلة شيوعًا",
@@ -173,12 +175,12 @@ const I18N = {
         "faq.q4": "هل يعمل مع هاتفي؟", "faq.a4": "يُفترض أن يعمل مع أي جهاز يقبل لوحة مفاتيح USB: ويندوز وماك ولينكس، وكثير من هواتف أندرويد وأجهزة iPad بمنفذ USB-C. نختبر التوافق الآن، والبلوتوث ضمن خطتنا.",
         "faq.q5": "لماذا أثق بجهاز جديد؟", "faq.a5": "لا نطلب منك أن تكتفي بكلامنا. البرنامج الثابت منشور، فتستطيع أنت أو أي شخص تثق به مراجعته. والتصميم يزيل الخطر الأكبر عمدًا: لا يوجد خادم يحمل بياناتك، فلا يوجد ما يمكن أن نسرّبه.",
         "faq.q6": "كم سيكلّف ومتى سيصل؟", "faq.a6": "لم نحدّد السعر بعد، وإجاباتك في نموذج التسجيل ستحدّده. سيكون شراءً لمرة واحدة بلا اشتراك، ومن في قائمة الانتظار يحصلون على أولوية الوصول إلى الدفعة الأولى.",
-        "join.eyebrow": "الدفعة الأولى", "join.h2": "كن من أوائل من يحصلون على SecureX",
+        "join.eyebrow": "الدفعة الأولى", "join.h2": "كن من أوائل من يحصلون على SecureSafeX",
         "join.lead": "انضم إلى قائمة الانتظار وسنراسلك مرة واحدة عندما تجهز الدفعة الأولى. بلا رسائل مزعجة، ويمكنك إلغاء الاشتراك متى شئت.",
-        "footer.by": "من Dr. Maker", "footer.privacy": "نستخدم بريدك لقائمة الانتظار فقط، ولا نبيعه ولا نشاركه أبدًا.",
+        "footer.by": "من Ali Hrhera", "footer.privacy": "نستخدم بريدك لقائمة الانتظار فقط، ولا نبيعه ولا نشاركه أبدًا.",
         "form.label": "البريد الإلكتروني", "form.ph": "you@example.com", "form.btn": "انضم إلى قائمة الانتظار", "form.sending": "جارٍ الانضمام…",
         "form.note": "الانضمام مجاني. سنراسلك مرة واحدة عند الإطلاق.",
-        "form.err": "يرجى إدخال بريد إلكتروني صحيح.", "form.err.net": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+        "form.err": "يرجى إدخال بريد إلكتروني صحيح.", "form.err.net": "حدث خطأ. يرجى المحاولة مرة أخرى.", "form.err.rate": "محاولات كثيرة. يرجى الانتظار بضع دقائق ثم المحاولة مرة أخرى.",
         "s2.title": "أنت الآن في القائمة.", "s2.sub": "هل تودّ مساعدتنا في تطويره؟ أربعة أسئلة اختيارية تستغرق نحو 20 ثانية.",
         "s2.q1": "أيّ هذه يصفك أكثر؟", "s2.q1.a": "تهمّني الخصوصية كثيرًا", "s2.q1.b": "أدير حسابات عمل كثيرة", "s2.q1.c": "مطوّر / صانع", "s2.q1.d": "أريد حلًا بسيطًا فقط", "s2.q1.e": "أشتري للعائلة أو لفريق",
         "s2.q2": "أيّ الميزات ستستخدم؟ (اختر ما تشاء)", "s2.q2.a": "خزنة بلا إنترنت", "s2.q2.b": "كتابة كلمات المرور تلقائيًا", "s2.q2.c": "رموز التحقق الثنائي", "s2.q2.d": "الاستيراد من مديري الحالي", "s2.q2.e": "إضافة المتصفح", "s2.q2.f": "نسخ احتياطي لجهاز ثانٍ", "s2.q2.g": "بلوتوث للهواتف",
@@ -195,7 +197,8 @@ const store = {
 };
 const params = new URLSearchParams(location.search);
 const utm = {};
-["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (params.get(k)) utm[k] = params.get(k); });
+// Capped to the API's limits so an unusually long ad link can't get a signup rejected.
+["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (params.get(k)) utm[k] = params.get(k).slice(0, 100); });
 
 // Variant: ?v= wins (for ad-specific landing URLs), then the sticky stored value, then random.
 let variant = params.get("v");
@@ -212,7 +215,7 @@ let signupEmail = store.get("sx_email");
 // word order around them render correctly in RTL text.
 const t = k => {
     const v = I18N[lang][k] ?? I18N.en[k] ?? k;
-    return lang === "ar" ? v.replace(/SecureX|Dr\. Maker/g, m => "\u2068" + m + "\u2069") : v;
+    return lang === "ar" ? v.replace(/SecureSafeX|Ali Hrhera/g, m => "\u2068" + m + "\u2069") : v;
 };
 
 /* ===================== ANALYTICS ===================== */
@@ -243,6 +246,7 @@ function applyLang() {
     label.textContent = t("lang.label");
     label.lang = lang === "ar" ? "en" : "ar";
     toggle.setAttribute("aria-label", t("lang.switch"));
+    updateThemeButton();
     document.querySelectorAll(".done-msg span").forEach(el => { el.textContent = t("s2.title") + " " + t("s2.done"); });
     document.querySelectorAll(".vote").forEach(b => {
         b.querySelector("span").textContent = t(b.getAttribute("aria-pressed") === "true" ? "why.voted" : "why.vote");
@@ -256,6 +260,30 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
     applyLang();
     track("lang_switch", { to: lang });
 });
+
+/* ===================== THEME ===================== */
+// The head script already applied the saved theme (or the OS one) before first paint.
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const currentTheme = () => document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (themeMeta) themeMeta.content = theme === "light" ? "#ffffff" : "#121418";
+    updateThemeButton();
+}
+function updateThemeButton() {
+    document.getElementById("theme-toggle").setAttribute("aria-label", t(currentTheme() === "light" ? "theme.toDark" : "theme.toLight"));
+}
+document.getElementById("theme-toggle").addEventListener("click", () => {
+    const next = currentTheme() === "light" ? "dark" : "light";
+    store.set("sx_theme", next);
+    setTheme(next);
+    track("theme_switch", { to: next });
+});
+// Until the visitor picks a theme, keep following the OS setting.
+const osTheme = matchMedia("(prefers-color-scheme: light)");
+const followOs = e => { if (!store.get("sx_theme")) setTheme(e.matches ? "light" : "dark"); };
+// Safari < 14 only has the older addListener(); a throw here would stop the signup forms from mounting.
+if (osTheme.addEventListener) osTheme.addEventListener("change", followOs); else if (osTheme.addListener) osTheme.addListener(followOs);
 
 /* ===================== LEAD PILLAR ===================== */
 // The pillar matching the hero angle goes first so the page tells one consistent story.
@@ -280,14 +308,38 @@ document.querySelectorAll(".vote").forEach(btn => {
 });
 
 /* ===================== SUBMIT ===================== */
+// Mirrors normalizeEmail() in server/src/validate.js so people see problems before a round trip.
+// The server re-checks everything; this is only for feedback.
+function normalizeEmail(value) {
+    const email = String(value || "").trim().toLowerCase();
+    if (email.length < 6 || email.length > 254) return null;
+    const at = email.indexOf("@");
+    if (at < 1 || at !== email.lastIndexOf("@")) return null;
+    const local = email.slice(0, at), labels = email.slice(at + 1).split(".");
+    if (local.length > 64 || !/^[a-z0-9_%+-]+(?:\.[a-z0-9_%+-]+)*$/.test(local)) return null;
+    if (labels.length < 2 || !labels.every(l => /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(l))) return null;
+    return /^(?:[a-z]{2,63}|xn--[a-z0-9-]{1,59})$/.test(labels[labels.length - 1]) ? email : null;
+}
+
+// Referring page without query string or fragment (they can carry other people's tokens).
+function referrerUrl() {
+    try { const r = new URL(document.referrer); return /^https?:$/.test(r.protocol) ? (r.origin + r.pathname).slice(0, 500) : null; }
+    catch (_) { return null; }
+}
+
 async function send(payload) {
-    const record = { ...payload, variant, lang, votes, utm, referrer: document.referrer || null, ts: new Date().toISOString() };
-    const local = store.get("sx_waitlist_local") || [];
-    local.push(record); store.set("sx_waitlist_local", local);
-    if (!CONFIG.endpoint) return true;
-    // text/plain avoids a CORS preflight (works with Google Apps Script and most form backends).
+    const record = { ...payload, variant, lang, votes, utm, referrer: referrerUrl() };
+    if (!CONFIG.endpoint) {
+        // No API configured (static preview): keep a copy in this browser only.
+        const local = store.get("sx_waitlist_local") || [];
+        local.push({ ...record, ts: new Date().toISOString() }); store.set("sx_waitlist_local", local);
+        return { ok: true };
+    }
+    // text/plain keeps this a simple CORS request (no preflight); the API parses it as JSON.
     const res = await fetch(CONFIG.endpoint, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(record) });
-    return res.ok || res.type === "opaque";
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw Object.assign(new Error(data.error || "request_failed"), { status: res.status });
+    return data;
 }
 
 let fieldSeq = 0;
@@ -302,21 +354,23 @@ function mountEmail(slot) {
     input.addEventListener("focus", () => track("form_focus", { loc: slot.dataset.formSlot }), { once: true });
     form.addEventListener("submit", async e => {
         e.preventDefault();
-        const email = input.value.trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        const email = normalizeEmail(input.value);
+        if (!email) {
             input.setAttribute("aria-invalid", "true"); err.textContent = t("form.err"); input.focus(); return;
         }
         input.removeAttribute("aria-invalid"); err.textContent = "";
         const btn = form.querySelector("button");
         btn.disabled = true; btn.textContent = t("form.sending");
         try {
-            await send({ stage: "signup", email, loc: slot.dataset.formSlot });
+            const res = await send({ stage: "signup", email, loc: slot.dataset.formSlot, website: form.querySelector('[name="website"]').value });
             signupEmail = email; store.set("sx_email", email);
+            if (res.token) store.set("sx_token", res.token); // proves step 2 comes from the same person
             track("waitlist_signup", { loc: slot.dataset.formSlot });
             document.querySelectorAll("[data-form-slot]").forEach(s => mountDetails(s));
             slot.querySelector("form")?.querySelector("input,button")?.focus();
-        } catch (_) {
-            err.textContent = t("form.err.net"); btn.disabled = false; btn.textContent = t("form.btn");
+        } catch (e) {
+            err.textContent = t(e.status === 429 ? "form.err.rate" : e.status === 400 ? "form.err" : "form.err.net");
+            btn.disabled = false; btn.textContent = t("form.btn");
         }
     });
     slot.replaceChildren(node);
@@ -334,7 +388,7 @@ function mountDetails(slot) {
         const fd = new FormData(form);
         const details = { persona: fd.get("persona"), features: fd.getAll("features"), price: fd.get("price"), worry: (fd.get("worry") || "").trim() };
         const btn = form.querySelector("button[type=submit]"); btn.disabled = true;
-        try { await send({ stage: "details", email: signupEmail, ...details }); } catch (_) { }
+        try { await send({ stage: "details", email: signupEmail, token: store.get("sx_token"), ...details }); } catch (_) { }
         store.set("sx_details_done", true);
         track("waitlist_details", { persona: details.persona || "none", features: details.features.join(","), price: details.price || "none", has_worry: !!details.worry });
         document.querySelectorAll("[data-form-slot]").forEach(s => mountDetails(s));
