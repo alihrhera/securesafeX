@@ -32,7 +32,7 @@ Open <http://localhost:8000>. When the page is opened from `localhost`, it posts
 
 1. Deploy `server/` behind HTTPS (for example Caddy or nginx), with
    `ALLOWED_ORIGINS=https://<user>.github.io` and `TRUST_PROXY=1`.
-2. In `index.html` (and `assets/js/home-v2.js`), set `CONFIG.endpoint` to
+2. In `assets/js/home.js`, set `CONFIG.endpoint` to
    `https://<your-api-host>/api/waitlist`.
 
 ## API
