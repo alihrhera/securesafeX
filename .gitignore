@@ -23,3 +23,30 @@
 /server/.env
 # Added by code-review-graph
 .code-review-graph/
+
+# AI Development Environment Tools
+# Claude Code
+.claude/
+
+# CodeBuddy
+.codebuddy/
+
+# Cursor AI IDE
+.cursorrules
+.windsurfrules
+
+# Google Gemini
+.gemini/
+
+# Other AI tools
+.kiro/
+.qoder/
+.mcp.json
+opencode.jsonc
+
+# AI Tool Configuration Files
+AGENTS.md
+CLAUDE.md
+CODEBUDDY.md
+GEMINI.md
+QODER.md
