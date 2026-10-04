@@ -156,12 +156,15 @@ export function createApp(config, store) {
       if (r.full) console.warn("[waitlist] store full: MAX_RECORDS reached");
       if (r.created) console.log(`[waitlist] signup ${logId(sub.email)}`);
       // Existing emails get a throwaway token that matches nothing, so the answer looks the same.
-      return [200, { ok: true, token: r.token ?? randomBytes(32).toString("base64url") }];
+      const token = r.token ?? randomBytes(32).toString("base64url");
+      const record = r.created ? await store.readPublic(sub.email) : null;
+      return [200, { ok: true, token, record }];
     }
 
     const r = await store.details(sub);
     if (r.saved) console.log(`[waitlist] details ${logId(sub.email)}`);
-    return [200, { ok: true }];
+    const record = r.saved ? await store.readPublic(sub.email) : null;
+    return [200, { ok: true, record }];
   }
 
   return http.createServer(async (req, res) => {

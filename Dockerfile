@@ -2,9 +2,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files for both server and 3d
+# Copy package files for server
 COPY server/package*.json ./server/
-COPY 3d/package*.json ./3d/
 
 # Install server dependencies
 WORKDIR /app/server
@@ -12,12 +11,10 @@ RUN npm ci
 
 # Copy server source
 COPY server/src ./src
-COPY server/test ./test
 
-# Copy static assets to root
+# Copy static assets to root (assets/ includes the 3d/ subfolder)
 WORKDIR /app
 COPY assets ./assets
-COPY 3d/assets ./3d/assets
 COPY index.html .
 
 # Create data directory for waitlist signups
@@ -28,7 +25,7 @@ EXPOSE 8787
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost:8787/healthz || exit 1
+  CMD wget --quiet --tries=1 --spider http://127.0.0.1:8787/healthz || exit 1
 
 # Environment variables with sensible defaults
 ENV PORT=8787 \

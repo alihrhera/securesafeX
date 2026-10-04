@@ -134,4 +134,15 @@ export class Store {
       return { saved: true };
     });
   }
+  /**
+   * Read a record and return it without the internal tokenHash field.
+   * Safe to send to the user who owns that email.
+   */
+  async readPublic(email) {
+    const file = this.fileFor(email);
+    const record = await this.read(file);
+    if (!record) return null;
+    const { tokenHash: _omit, ...pub } = record;
+    return pub;
+  }
 }

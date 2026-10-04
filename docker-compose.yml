@@ -5,51 +5,34 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    expose:
-      - "8787"
+    ports:
+      - "127.0.0.1:8787:8787"
     environment:
       PORT: 8787
       HOST: 0.0.0.0
       DATA_DIR: /app/data
       # Allow requests from the web frontend
-      ALLOWED_ORIGINS: "http://localhost,http://127.0.0.1,http://localhost:3000"
+      ALLOWED_ORIGINS: "https://securesafex.pollenbyte.com,http://localhost,http://127.0.0.1"
       RATE_LIMIT_MAX: 10
       RATE_LIMIT_WINDOW_MS: 600000
       MAX_RECORDS: 50000
       TRUST_PROXY: 1
     volumes:
-      # Persist waitlist data
-      - securex-data:/app/data
+      # Persist waitlist data in /var/www/08-securesafe/user-data/ (outside the container)
+      - /var/www/08-securesafe/user-data:/app/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8787/healthz"]
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:8787/healthz"]
       interval: 30s
       timeout: 3s
       retries: 3
       start_period: 5s
     networks:
       - securex-net
-
-  securex-web:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./index.html:/usr/share/nginx/html/index.html:ro
-      - ./assets:/usr/share/nginx/html/assets:ro
-      - ./3d/assets:/usr/share/nginx/html/3d/assets:ro
-    depends_on:
-      securex-api:
-        condition: service_healthy
-    restart: unless-stopped
-    networks:
-      - securex-net
+      - shared_network
 
 networks:
   securex-net:
     driver: bridge
-
-volumes:
-  securex-data:
-    driver: local
+  shared_network:
+    external: true

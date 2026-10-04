@@ -2,7 +2,7 @@
 const CONFIG = {
     // Waitlist API (server/). Local preview talks to `npm start` on port 8787; set the deployed URL
     // for production, e.g. "https://api.example.com/api/waitlist". Empty = keep signups in this browser only.
-    endpoint: ["localhost", "127.0.0.1"].includes(location.hostname) ? "http://localhost:8787/api/waitlist" : "",
+    endpoint: ["localhost", "127.0.0.1"].includes(location.hostname) ? "http://localhost:8787/api/waitlist" : "/api/waitlist",
     variants: ["privacy", "security", "ease"]
 };
 
@@ -342,6 +342,16 @@ async function send(payload) {
     return data;
 }
 
+// Trigger a browser download of the user's submitted data as a JSON file.
+function downloadJson(record, filename) {
+    const blob = new Blob([JSON.stringify(record, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+}
+
 let fieldSeq = 0;
 function mountEmail(slot) {
     const node = document.getElementById("tpl-email").content.cloneNode(true);
@@ -365,6 +375,7 @@ function mountEmail(slot) {
             const res = await send({ stage: "signup", email, loc: slot.dataset.formSlot, website: form.querySelector('[name="website"]').value });
             signupEmail = email; store.set("sx_email", email);
             if (res.token) store.set("sx_token", res.token); // proves step 2 comes from the same person
+            if (res.record) downloadJson(res.record, `securesafex-${email}-signup.json`);
             track("waitlist_signup", { loc: slot.dataset.formSlot });
             document.querySelectorAll("[data-form-slot]").forEach(s => mountDetails(s));
             slot.querySelector("form")?.querySelector("input,button")?.focus();
@@ -388,7 +399,10 @@ function mountDetails(slot) {
         const fd = new FormData(form);
         const details = { persona: fd.get("persona"), features: fd.getAll("features"), price: fd.get("price"), worry: (fd.get("worry") || "").trim() };
         const btn = form.querySelector("button[type=submit]"); btn.disabled = true;
-        try { await send({ stage: "details", email: signupEmail, token: store.get("sx_token"), ...details }); } catch (_) { }
+        try {
+            const res = await send({ stage: "details", email: signupEmail, token: store.get("sx_token"), ...details });
+            if (res && res.record) downloadJson(res.record, `securesafex-${signupEmail}-complete.json`);
+        } catch (_) { }
         store.set("sx_details_done", true);
         track("waitlist_details", { persona: details.persona || "none", features: details.features.join(","), price: details.price || "none", has_worry: !!details.worry });
         document.querySelectorAll("[data-form-slot]").forEach(s => mountDetails(s));
