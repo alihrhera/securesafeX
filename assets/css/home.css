@@ -1,0 +1,1470 @@
+:root {
+    --nav-h: 65px;
+    --bg: #07090a;
+    --surface: #0d1211;
+    --surface-2: #131a18;
+    --line: #22302c;
+    --text: #e8f0ec;
+    --muted: #9aaba4;
+    --phosphor: #8cff6a;
+    --phosphor-dim: #4f9a3c;
+    --amber: #f5e663;
+    --danger: #ff8a7a;
+    --radius: 14px;
+    --max: 1120px;
+    --font-display: "Space Grotesk", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --font-body: "Inter", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --font-pixel: "VT323", ui-monospace, monospace;
+}
+
+html[lang="ar"] {
+    --font-display: "Noto Kufi Arabic", "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans Arabic", "Inter", system-ui, sans-serif;
+}
+
+/* ---------- Arabic typography & RTL ---------- */
+/* Arabic glyphs sit smaller on the x-height and need taller lines; never letter-space Arabic (it breaks joining). */
+html[lang="ar"] body {
+    font-size: 17px;
+    line-height: 1.85
+}
+
+html[lang="ar"] h1 {
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+    line-height: 1.45
+}
+
+html[lang="ar"] h2 {
+    font-size: clamp(1.45rem, 3vw, 2.15rem);
+    line-height: 1.5
+}
+
+html[lang="ar"] h3 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.6
+}
+
+html[lang="ar"] * {
+    letter-spacing: 0 !important
+}
+
+html[lang="ar"] .btn {
+    font-weight: 700
+}
+
+html[lang="ar"] .hero .sub {
+    font-size: 1.12rem
+}
+
+html[lang="ar"] .faq summary {
+    font-size: 1.02rem
+}
+
+/* Latin-only fragments (brand, emails, prices, codes) keep their own direction inside Arabic text. */
+.ltr {
+    direction: ltr;
+    unicode-bidi: isolate
+}
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden
+}
+
+img {
+    max-width: 100%;
+    display: block
+}
+
+a {
+    color: var(--phosphor)
+}
+
+:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 6px
+}
+
+.wrap {
+    max-width: var(--max);
+    margin-inline: auto;
+    padding-inline: 20px
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    margin: 0 0 .5em;
+    letter-spacing: -.01em
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3 {
+    letter-spacing: 0;
+    line-height: 1.35
+}
+
+h1 {
+    font-size: clamp(2.1rem, 5.2vw, 3.6rem)
+}
+
+h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem)
+}
+
+h3 {
+    font-size: 1.2rem
+}
+
+p {
+    margin: 0 0 1em
+}
+
+.muted {
+    color: var(--muted)
+}
+
+.eyebrow {
+    font-family: var(--font-pixel);
+    font-size: 1.35rem;
+    color: var(--phosphor);
+    letter-spacing: .04em;
+    margin-bottom: .4em;
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+/* Direction-aware marker: points "forward" in both LTR and RTL. */
+.eyebrow::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid currentColor;
+    border-inline-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    flex: none
+}
+
+html[dir="rtl"] .eyebrow::before {
+    transform: rotate(-45deg)
+}
+
+.final .eyebrow {
+    justify-content: center
+}
+
+section {
+    padding-block: clamp(64px, 10vw, 112px);
+    border-top: 1px solid var(--line)
+}
+
+.section-head {
+    max-width: 680px;
+    margin-bottom: 40px
+}
+
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .photo-tag,
+html[lang="ar"] .explode-toggle {
+    font-family: var(--font-body);
+    font-size: .95rem;
+    letter-spacing: 0;
+    font-weight: 500
+}
+
+html[lang="ar"] .photo-tag,
+html[lang="ar"] .explode-toggle {
+    font-size: .85rem;
+    padding: 6px 10px
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap
+}
+
+/* nav */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(7, 9, 10, .82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line)
+}
+
+.nav .wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 64px
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-pixel);
+    font-size: 1.6rem;
+    color: var(--text);
+    text-decoration: none;
+    margin-inline-end: auto
+}
+
+.brand svg {
+    color: var(--amber)
+}
+
+.brand-x {
+    color: var(--phosphor)
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font: 600 1rem var(--font-body);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .2s, border-color .2s, color .2s
+}
+
+.btn-primary {
+    background: var(--phosphor);
+    color: #06100a
+}
+
+.btn-primary:hover {
+    background: #a8ff8e
+}
+
+.btn-primary[disabled] {
+    opacity: .6;
+    cursor: progress
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text)
+}
+
+.btn-ghost:hover {
+    border-color: var(--phosphor-dim)
+}
+
+.btn-sm {
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: .92rem
+}
+
+.lang-btn {
+    font-family: "IBM Plex Sans Arabic", "Inter", sans-serif;
+    gap: 6px
+}
+
+.lang-btn svg {
+    color: var(--muted)
+}
+
+/* hero */
+.hero {
+    border-top: 0;
+    padding-block: clamp(40px, 7vw, 88px)
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 56px;
+    align-items: center
+}
+
+.hero .sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 560px
+}
+
+.trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: .95rem
+}
+
+.trust-row li {
+    display: flex;
+    align-items: center;
+    gap: 7px
+}
+
+.trust-row svg {
+    color: var(--phosphor);
+    flex: none
+}
+
+.photo-frame {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    aspect-ratio: 1/1;
+    background: var(--surface)
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.photo-tag {
+    position: absolute;
+    inset-inline-start: 14px;
+    bottom: 14px;
+    background: rgba(7, 9, 10, .85);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-family: var(--font-pixel);
+    font-size: 1.15rem;
+    color: var(--phosphor)
+}
+
+/* interactive 3D device (3d/landing/viewer.ts); the photo stays as poster and fallback */
+.photo-frame .device-3d {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .6s ease;
+    cursor: grab;
+    touch-action: pan-y
+}
+
+.photo-frame .device-3d:active {
+    cursor: grabbing
+}
+
+.photo-frame.has-3d .device-3d {
+    opacity: 1
+}
+
+.photo-frame.has-3d img {
+    opacity: 0;
+    transition: opacity .6s ease
+}
+
+.explode-toggle {
+    display: none;
+    position: absolute;
+    inset-inline-end: 14px;
+    bottom: 14px;
+    background: rgba(7, 9, 10, .85);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-family: var(--font-pixel);
+    font-size: 1.15rem;
+    color: var(--phosphor);
+    cursor: pointer
+}
+
+.photo-frame.has-3d .explode-toggle {
+    display: block
+}
+
+.photo-frame .photo-tag,
+.photo-frame .explode-toggle {
+    z-index: 1
+}
+
+.explode-toggle:focus-visible {
+    outline: 2px solid var(--phosphor);
+    outline-offset: 2px
+}
+
+.explode-toggle .when-open,
+.explode-toggle[aria-pressed="true"] .when-closed {
+    display: none
+}
+
+.explode-toggle[aria-pressed="true"] .when-open {
+    display: inline
+}
+
+/* Scroll hero: static hero by default, pinned 3D stage once viewer-scroll.ts adds .scroll-3d */
+.scroll-track,
+.scroll-hint {
+    display: none
+}
+
+.hero.scroll-3d {
+    position: relative;
+    padding-block: 0
+}
+
+.hero.scroll-3d .scroll-track {
+    display: block;
+    height: 420vh
+}
+
+.hero-stage {
+    position: sticky;
+    top: var(--nav-h);
+    height: calc(100svh - var(--nav-h));
+    overflow: hidden
+}
+
+.stage-canvas,
+.stage-canvas .device-3d {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%
+}
+
+/* First frame is the product photo; securex-scroll.js sets --photo (1 -> 0) over the first bit
+      of scroll and the model fades in underneath. No transition: scroll already eases it. */
+.stage-canvas .device-3d {
+    opacity: 0
+}
+
+.hero.has-3d .stage-canvas .device-3d {
+    opacity: calc(1 - var(--photo, 1))
+}
+
+.hero.has-3d .hero-visual .photo-frame,
+.hero.has-3d .stage-photo {
+    opacity: var(--photo, 1)
+}
+
+/* Mobile: the hero column photo is hidden, so the stage carries its own copy of it. */
+.stage-photo {
+    display: none
+}
+
+.layer-captions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    inset-inline-start: max(20px, calc((100vw - var(--max)) / 2 + 20px));
+    top: 50%;
+    width: min(360px, calc(100% - 40px));
+    transform: translateY(-50%);
+    pointer-events: none
+}
+
+.layer-captions li {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    transform: translateY(calc(-50% + 14px));
+    opacity: 0;
+    transition: opacity .45s ease, transform .45s ease
+}
+
+.layer-captions li.on {
+    opacity: 1;
+    transform: translateY(-50%);
+    pointer-events: auto
+}
+
+.cap-k {
+    display: block;
+    font-family: var(--font-pixel);
+    font-size: 1.15rem;
+    color: var(--phosphor);
+    margin-bottom: 8px
+}
+
+.layer-captions strong {
+    display: block;
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    line-height: 1.15;
+    margin-bottom: 10px
+}
+
+.layer-captions p {
+    color: var(--muted);
+    margin: 0 0 16px
+}
+
+@media (min-width:901px) {
+    .hero.scroll-3d .hero-copy-wrap {
+        position: absolute;
+        inset-inline: 0;
+        top: 0;
+        height: calc(100svh - var(--nav-h));
+        display: flex;
+        align-items: center;
+        z-index: 2;
+        pointer-events: none
+    }
+
+    .hero.scroll-3d .hero-copy-wrap .wrap {
+        width: 100%
+    }
+
+    .hero.scroll-3d .hero-copy {
+        pointer-events: auto
+    }
+
+    .hero.scroll-3d .scroll-hint {
+        display: block;
+        position: absolute;
+        bottom: 22px;
+        inset-inline: 0;
+        text-align: center;
+        font-family: var(--font-pixel);
+        font-size: 1.1rem;
+        color: var(--muted)
+    }
+}
+
+@media (max-width:900px) {
+    .hero.scroll-3d .hero-copy-wrap {
+        padding-block: clamp(40px, 7vw, 88px) 8px
+    }
+
+    .hero.scroll-3d .hero-visual {
+        display: none
+    }
+
+    .hero.scroll-3d .stage-photo {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: min(78vw, 360px);
+        height: auto;
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        pointer-events: none
+    }
+
+    .hero.scroll-3d .scroll-track {
+        height: 340vh
+    }
+
+    .layer-captions {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        inset-inline: 20px;
+        width: auto
+    }
+
+    .layer-captions li {
+        top: auto;
+        bottom: 0;
+        transform: translateY(14px);
+        background: rgba(7, 9, 10, .82);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 16px;
+        backdrop-filter: blur(8px)
+    }
+
+    .layer-captions li.on {
+        transform: none
+    }
+
+    .layer-captions strong {
+        font-size: 1.25rem
+    }
+
+    .layer-captions p {
+        font-size: .95rem;
+        margin-bottom: 10px
+    }
+}
+
+/* review hook (#p=0.6): stage fixed under the nav at a pinned timeline position */
+.hero.scroll-preview .hero-stage {
+    position: fixed;
+    inset-inline: 0;
+    top: var(--nav-h);
+    z-index: 5;
+    background: var(--bg)
+}
+
+html[lang="ar"] .cap-k,
+html[lang="ar"] .hero.scroll-3d .scroll-hint {
+    font-family: var(--font-body);
+    font-size: .9rem;
+    letter-spacing: 0;
+    font-weight: 500
+}
+
+/* forms */
+.signup {
+    margin-top: 28px;
+    max-width: 540px
+}
+
+.field-row {
+    display: flex;
+    gap: 10px
+}
+
+.input {
+    flex: 1;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font: 1rem var(--font-body);
+    transition: border-color .2s
+}
+
+.input::placeholder {
+    color: #74857e
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--phosphor)
+}
+
+.input[aria-invalid="true"] {
+    border-color: var(--danger)
+}
+
+textarea.input {
+    min-height: 88px;
+    padding: 12px 16px;
+    resize: vertical;
+    width: 100%
+}
+
+.form-note {
+    font-size: .88rem;
+    color: var(--muted);
+    margin-top: 10px
+}
+
+/* Honeypot: clipped to nothing (no offset, which would widen RTL pages); bots that fill it are ignored by the API. */
+.hp {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none
+}
+
+.form-error {
+    color: var(--danger);
+    font-size: .92rem;
+    margin-top: 8px;
+    min-height: 1.2em
+}
+
+.step2 {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-top: 4px
+}
+
+.step2 .ok {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 14px
+}
+
+.step2 .ok svg {
+    color: var(--phosphor);
+    flex: none;
+    margin-top: 3px
+}
+
+.step2 fieldset {
+    border: 0;
+    margin: 0 0 18px;
+    padding: 0
+}
+
+.step2 legend {
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding: 0
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.chip {
+    position: relative
+}
+
+.chip input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer
+}
+
+.chip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: .93rem;
+    transition: background-color .2s, border-color .2s, color .2s;
+    cursor: pointer
+}
+
+.chip input:checked+span {
+    background: rgba(140, 255, 106, .12);
+    border-color: var(--phosphor);
+    color: var(--phosphor)
+}
+
+.chip input:focus-visible+span {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px
+}
+
+.done-msg {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--phosphor);
+    font-weight: 600
+}
+
+/* problem */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px
+}
+
+.card .ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: var(--surface-2);
+    color: var(--amber);
+    margin-bottom: 16px
+}
+
+.card p {
+    color: var(--muted);
+    margin: 0
+}
+
+.callout {
+    margin-top: 28px;
+    padding: 18px 22px;
+    border-inline-start: 3px solid var(--amber);
+    background: var(--surface);
+    border-radius: 0 10px 10px 0;
+    color: var(--muted)
+}
+
+html[dir="rtl"] .callout {
+    border-radius: 10px 0 0 10px
+}
+
+/* how it works */
+.how-grid {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 56px;
+    align-items: center
+}
+
+.oled {
+    background: #000;
+    border: 10px solid #1b1f1e;
+    border-radius: 18px;
+    padding: 22px 20px;
+    font-family: var(--font-pixel);
+    font-size: 1.55rem;
+    line-height: 1.25;
+    color: var(--phosphor);
+    box-shadow: 0 0 0 1px var(--line), 0 30px 80px -30px rgba(140, 255, 106, .25);
+    max-width: 400px;
+    margin-inline: auto;
+    direction: ltr;
+    text-align: left
+}
+
+.oled .row {
+    padding: 2px 8px;
+    border-radius: 3px
+}
+
+.oled .row.sel {
+    background: var(--phosphor);
+    color: #000
+}
+
+.oled .hdr {
+    color: var(--amber);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #2b4a22;
+    padding-bottom: 6px
+}
+
+.oled .foot {
+    margin-top: 10px;
+    color: var(--phosphor-dim);
+    font-size: 1.25rem
+}
+
+.steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: s
+}
+
+.steps li {
+    position: relative;
+    padding-inline-start: 60px;
+    margin-bottom: 26px
+}
+
+.steps li::before {
+    counter-increment: s;
+    content: counter(s);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--phosphor-dim);
+    color: var(--phosphor);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-pixel);
+    font-size: 1.5rem
+}
+
+.steps p {
+    color: var(--muted);
+    margin: 0
+}
+
+/* pillars */
+.pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+}
+
+.pillar {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px;
+    transition: border-color .2s
+}
+
+.pillar.lead {
+    border-color: var(--phosphor-dim)
+}
+
+.pillar .ico {
+    color: var(--phosphor);
+    margin-bottom: 14px
+}
+
+.pillar ul {
+    margin: 0 0 20px;
+    padding-inline-start: 18px;
+    color: var(--muted)
+}
+
+.pillar li {
+    margin-bottom: 6px
+}
+
+.vote {
+    margin-top: auto;
+    align-self: flex-start
+}
+
+.vote[aria-pressed="true"] {
+    border-color: var(--phosphor);
+    color: var(--phosphor);
+    background: rgba(140, 255, 106, .08)
+}
+
+/* compare */
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius)
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px
+}
+
+th,
+td {
+    padding: 14px 18px;
+    text-align: start;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top
+}
+
+thead th {
+    font-family: var(--font-display);
+    background: var(--surface);
+    font-size: 1rem
+}
+
+tbody th {
+    font-weight: 500;
+    color: var(--muted)
+}
+
+tr:last-child th,
+tr:last-child td {
+    border-bottom: 0
+}
+
+td.us,
+th.us {
+    background: rgba(140, 255, 106, .06);
+    color: var(--text)
+}
+
+thead th.us {
+    color: var(--phosphor)
+}
+
+/* open */
+.open-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 28px
+}
+
+.spec {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px
+}
+
+.spec b {
+    display: block;
+    font-family: var(--font-pixel);
+    font-size: 1.6rem;
+    color: var(--phosphor);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 6px
+}
+
+.spec span {
+    color: var(--muted);
+    font-size: .93rem
+}
+
+/* faq */
+.faq {
+    max-width: 780px
+}
+
+.faq details {
+    border-bottom: 1px solid var(--line)
+}
+
+.faq summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    font-weight: 600;
+    font-size: 1.05rem;
+    min-height: 44px
+}
+
+.faq summary::-webkit-details-marker {
+    display: none
+}
+
+.faq summary svg {
+    flex: none;
+    transition: transform .2s;
+    color: var(--muted)
+}
+
+.faq details[open] summary svg {
+    transform: rotate(45deg)
+}
+
+.faq details p {
+    color: var(--muted);
+    margin: 0 0 20px
+}
+
+/* final cta */
+.final {
+    text-align: center
+}
+
+.final .signup {
+    margin-inline: auto;
+    text-align: start
+}
+
+.final .section-head {
+    margin-inline: auto
+}
+
+footer {
+    border-top: 1px solid var(--line);
+    padding-block: 32px;
+    color: var(--muted);
+    font-size: .9rem
+}
+
+footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    justify-content: space-between
+}
+
+/* sticky mobile cta */
+.sticky-cta {
+    position: fixed;
+    inset-inline: 12px;
+    bottom: 12px;
+    z-index: 40;
+    display: none;
+    transform: translateY(140%);
+    transition: transform .25s
+}
+
+.sticky-cta.show {
+    transform: none
+}
+
+.sticky-cta .btn {
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .5)
+}
+
+@media (max-width:900px) {
+
+    .hero-grid,
+    .how-grid {
+        grid-template-columns: 1fr;
+        gap: 40px
+    }
+
+    .hero-visual {
+        max-width: 320px;
+        margin-inline: auto;
+        width: 100%
+    }
+
+    .cards,
+    .pillars {
+        grid-template-columns: 1fr
+    }
+
+    .open-grid {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .sticky-cta {
+        display: block
+    }
+
+    .nav .nav-cta {
+        display: none
+    }
+}
+
+@media (max-width:520px) {
+    .field-row {
+        flex-direction: column
+    }
+
+    .field-row .btn {
+        width: 100%
+    }
+
+    .open-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important
+    }
+}
+
+/* ---------- SecureSafeX themes ----------
+      Dark  "Armored Protection":     charcoal gray + cyber blue + gold accents (default)
+      Light "Transparency & Purity":  white + royal blue + light gray
+      Theme is set on <html data-theme> by the head script (saved choice, else the OS setting).
+      --phosphor = primary accent, --amber = secondary accent (names kept from the base styles). */
+:root,
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #121418;
+    --surface: #1a1d23;
+    --surface-2: #22262e;
+    --line: #323844;
+    --line-strong: #464e5d;
+    --text: #eef1f6;
+    --muted: #a4adbd;
+    --placeholder: #7d8696;
+    --phosphor: #3d9bff;
+    --phosphor-dim: #2c5a92;
+    --amber: #e6b54a;
+    --danger: #ff8a7a;
+    --nav-bg: rgba(18, 20, 24, .84);
+    --glass: rgba(18, 20, 24, .86);
+    --tint: rgba(61, 155, 255, .12);
+    --glow-bg: radial-gradient(1100px 520px at 50% -200px, rgba(61, 155, 255, .14), transparent 70%);
+    --btn-bg: linear-gradient(180deg, #5cb0ff 0%, #3d9bff 55%, #2b84ec 100%);
+    --btn-bg-hover: linear-gradient(180deg, #78bfff 0%, #57a9ff 55%, #3d94f5 100%);
+    --btn-text: #061226;
+    --btn-shadow: 0 0 0 1px rgba(255, 255, 255, .18) inset, 0 8px 28px -10px rgba(61, 155, 255, .7);
+    --headline: linear-gradient(180deg, #ffffff 25%, #b8c3d6 100%);
+    --brand-word: linear-gradient(180deg, #ffffff 0%, #d9dfe9 50%, #9ea9bb 100%);
+    --lead-shadow: 0 0 0 1px rgba(230, 181, 74, .25) inset, 0 20px 60px -30px rgba(230, 181, 74, .35);
+    --oled-frame: #0b0c0f;
+    --mark-glow: drop-shadow(0 0 8px rgba(61, 155, 255, .45))
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #f4f6fa;
+    --surface-2: #eaeef5;
+    --line: #dbe1ea;
+    --line-strong: #b9c3d3;
+    --text: #0f172a;
+    --muted: #4b5567;
+    --placeholder: #646c7e;
+    --phosphor: #2348d1;
+    --phosphor-dim: #9fb0e6;
+    --amber: #1d3aa8;
+    --danger: #c0352b;
+    --nav-bg: rgba(255, 255, 255, .86);
+    --glass: rgba(255, 255, 255, .9);
+    --tint: rgba(35, 72, 209, .08);
+    --glow-bg: radial-gradient(1100px 520px at 50% -200px, rgba(35, 72, 209, .07), transparent 70%);
+    --btn-bg: linear-gradient(180deg, #3a5fe6 0%, #2348d1 100%);
+    --btn-bg-hover: linear-gradient(180deg, #2f53dc 0%, #1b3cb8 100%);
+    --btn-text: #ffffff;
+    --btn-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 8px 22px -10px rgba(35, 72, 209, .55);
+    --headline: linear-gradient(180deg, #0f172a 30%, #24418f 100%);
+    --brand-word: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    --lead-shadow: 0 0 0 1px rgba(35, 72, 209, .12) inset, 0 20px 50px -30px rgba(35, 72, 209, .35);
+    --oled-frame: #1b1e24;
+    --mark-glow: none
+}
+
+:root {
+    --font-pixel: var(--font-display)
+}
+
+body {
+    background: var(--glow-bg), var(--bg);
+    transition: background-color .25s ease, color .25s ease
+}
+
+.nav {
+    background: var(--nav-bg)
+}
+
+.photo-tag,
+.explode-toggle {
+    background: var(--glass)
+}
+
+/* <picture> only picks the WebP; let the <img> lay out as if it were the direct child. */
+.photo-frame picture,
+.hero-stage picture {
+    display: contents
+}
+
+.input::placeholder {
+    color: var(--placeholder)
+}
+
+@media (max-width:900px) {
+    .layer-captions li {
+        background: var(--glass)
+    }
+}
+
+/* logo */
+.brand {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: var(--text)
+}
+
+.brand-word {
+    background: var(--brand-word);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent
+}
+
+.brand-x {
+    color: var(--phosphor)
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+    filter: var(--mark-glow)
+}
+
+.final-logo {
+    width: 200px;
+    height: auto;
+    margin: 0 auto 8px
+}
+
+/* theme toggle */
+.theme-btn {
+    width: 44px;
+    padding: 0
+}
+
+.theme-btn svg {
+    color: var(--amber)
+}
+
+:root[data-theme="light"] .theme-btn .i-sun,
+:root:not([data-theme="light"]) .theme-btn .i-moon {
+    display: none
+}
+
+.hero h1 {
+    background: var(--headline);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent
+}
+
+.btn-primary {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    box-shadow: var(--btn-shadow);
+    transition: box-shadow .2s, filter .2s
+}
+
+.btn-primary:hover {
+    background: var(--btn-bg-hover)
+}
+
+.btn-ghost:hover {
+    border-color: var(--line-strong)
+}
+
+.input:focus {
+    border-color: var(--phosphor);
+    box-shadow: 0 0 0 3px var(--tint)
+}
+
+/* labels: small caps, gold in dark / royal blue in light */
+.eyebrow,
+.cap-k {
+    font-family: var(--font-body);
+    font-size: .78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--amber)
+}
+
+.photo-tag,
+.explode-toggle {
+    font-family: var(--font-body);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text)
+}
+
+.hero.scroll-3d .scroll-hint {
+    font-family: var(--font-body);
+    font-size: .8rem;
+    letter-spacing: .12em;
+    text-transform: uppercase
+}
+
+.spec b {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px
+}
+
+.steps li::before {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--amber);
+    border-color: var(--line-strong);
+    background: var(--surface-2)
+}
+
+/* cards & highlights */
+.card .ico {
+    color: var(--amber)
+}
+
+.pillar.lead {
+    border-color: var(--amber);
+    box-shadow: var(--lead-shadow)
+}
+
+.chip input:checked+span,
+.vote[aria-pressed="true"] {
+    background: var(--tint);
+    border-color: var(--phosphor);
+    color: var(--phosphor)
+}
+
+td.us,
+th.us {
+    background: var(--tint)
+}
+
+thead th.us {
+    color: var(--phosphor)
+}
+
+.callout {
+    border-inline-start-color: var(--amber)
+}
+
+/* The screen mock is the device's own display: black with white UI in both themes. */
+.oled {
+    font-family: "VT323", ui-monospace, monospace;
+    color: #dfe5f0;
+    border-color: var(--oled-frame);
+    box-shadow: 0 0 0 1px var(--line), 0 30px 80px -30px rgba(61, 155, 255, .35)
+}
+
+.oled .row.sel {
+    background: #dfe5f0;
+    color: #06070a
+}
+
+.oled .hdr {
+    color: #e6b54a;
+    border-bottom-color: #2a3142
+}
+
+.oled .foot {
+    color: #7d879c
+}
+
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .cap-k,
+html[lang="ar"] .photo-tag {
+    font-size: .9rem;
+    text-transform: none
+}
+
+@media (prefers-reduced-motion:reduce) {
+    body {
+        transition: none
+    }
+}
