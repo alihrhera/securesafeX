@@ -96,7 +96,7 @@ const I18N = {
         "s2.title": "You're on the list.", "s2.sub": "Want to help shape it? These 4 questions are optional and take about 20 seconds.",
         "s2.q1": "Which of these best describes you?", "s2.q1.a": "I care a lot about privacy", "s2.q1.b": "I manage many work accounts", "s2.q1.c": "Developer / maker", "s2.q1.d": "I just want something simple", "s2.q1.e": "Buying for family or a team",
         "s2.q2": "Which features would you use? (pick any)", "s2.q2.a": "Offline vault", "s2.q2.b": "Auto-typing passwords", "s2.q2.c": "2FA codes", "s2.q2.d": "Import from my manager", "s2.q2.e": "Browser extension", "s2.q2.f": "Backup to a 2nd device", "s2.q2.g": "Bluetooth for phones",
-        "s2.q3": "What would you pay for it, one time?", "s2.q3.lt30": "< $30", "s2.q3.30_50": "$30–50", "s2.q3.50_80": "$50–80", "s2.q3.80_120": "$80–120", "s2.q3.gt120": "$120+",
+        "s2.q3": "What would you pay for it, one time?", "s2.q3.lt50": "< $50", "s2.q3.50_80": "$50–80", "s2.q3.80_120": "$80–120", "s2.q3.gt120": "$120+",
         "s2.q4": "What would stop you from buying one?", "s2.q4.ph": "e.g. losing it, setup, price, trusting new hardware…",
         "s2.btn": "Send answers", "s2.done": "Thank you! This helps a lot."
     },
@@ -186,7 +186,7 @@ const I18N = {
         "s2.title": "أنت الآن في القائمة.", "s2.sub": "هل تودّ مساعدتنا في تطويره؟ أربعة أسئلة اختيارية تستغرق نحو 20 ثانية.",
         "s2.q1": "أيّ هذه يصفك أكثر؟", "s2.q1.a": "تهمّني الخصوصية كثيرًا", "s2.q1.b": "أدير حسابات عمل كثيرة", "s2.q1.c": "مطوّر / صانع", "s2.q1.d": "أريد حلًا بسيطًا فقط", "s2.q1.e": "أشتري للعائلة أو لفريق",
         "s2.q2": "أيّ الميزات ستستخدم؟ (اختر ما تشاء)", "s2.q2.a": "خزنة بلا إنترنت", "s2.q2.b": "كتابة كلمات المرور تلقائيًا", "s2.q2.c": "رموز التحقق الثنائي", "s2.q2.d": "الاستيراد من مديري الحالي", "s2.q2.e": "إضافة المتصفح", "s2.q2.f": "نسخ احتياطي لجهاز ثانٍ", "s2.q2.g": "بلوتوث للهواتف",
-        "s2.q3": "كم أنت مستعد لدفعه مقابله (مرة واحدة)؟", "s2.q3.lt30": "أقل من 2500 ج.م", "s2.q3.50_80": "من 2500 إلى 4000 ج.م", "s2.q3.80_120": "من 4000 إلى 6000 ج.م", "s2.q3.gt120": "أكثر من 6000 ج.م",
+        "s2.q3": "كم أنت مستعد لدفعه مقابله (مرة واحدة)؟", "s2.q3.lt50": "أقل من 2500 ج.م", "s2.q3.50_80": "من 2500 إلى 4000 ج.م", "s2.q3.80_120": "من 4000 إلى 6000 ج.م", "s2.q3.gt120": "أكثر من 6000 ج.م",
         "s2.q4": "ما الذي قد يمنعك من شرائه؟", "s2.q4.ph": "مثلًا: فقدانه، الإعداد، السعر، الثقة بجهاز جديد…",
         "s2.btn": "أرسل الإجابات", "s2.done": "شكرًا لك! هذا يساعدنا كثيرًا."
     }

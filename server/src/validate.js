@@ -21,7 +21,7 @@ const ENUMS = {
   vote: ["privacy", "security", "ease"],
   persona: ["privacy_advocate", "professional", "tech_maker", "everyday", "gift_family"],
   feature: ["offline_vault", "autotype", "totp", "import", "extension", "backup", "bluetooth"],
-  price: ["lt30", "30_50", "50_80", "80_120", "gt120"],
+  price: ["lt50", "50_80", "80_120", "gt120", "lt30", "30_50"], // lt30/30_50: old options, still sent by cached pages
 };
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
