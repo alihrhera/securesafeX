@@ -15,3 +15,11 @@
 .DS_Store
 .vscode/
 *.swp
+
+# Waitlist API: signup files hold people's emails and must never be committed
+# (this repo is published by GitHub Pages).
+/server/data/
+/server/node_modules/
+/server/.env
+# Added by code-review-graph
+.code-review-graph/
