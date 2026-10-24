@@ -19,13 +19,10 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="alternate" hreflang="en" href="?lang=en">
   <link rel="alternate" hreflang="ar" href="?lang=ar">
-  <script src="assets/js/boot.js?v=20261004-14.05"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@600;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=VT323&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/home.css?v=20261004-14.05">
+  <script src="assets/js/boot.js?v=20261024-1"></script>
+  <link rel="preload" href="assets/fonts/reem-kufi-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/cairo-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/home.css?v=20261024-1">
 </head>
 
 <body>
@@ -34,8 +31,15 @@
     <div class="wrap">
       <a class="brand" href="#top" aria-label="SecureSafeX" dir="ltr">
         <img class="brand-mark" src="assets/logo-mark.webp" width="96" height="96" alt="">
-        <span><span class="brand-word">SecureSafe</span><span class="brand-x">X</span></span>
+        <span>SecureSafe<span class="brand-x">X</span></span>
       </a>
+      <nav class="chapters" data-i18n-aria="nav.label" aria-label="Sections">
+        <a href="#problem" data-i18n="problem.eyebrow">the problem</a>
+        <a href="#how" data-i18n="how.eyebrow">the alternative</a>
+        <a href="#compare" data-i18n="cmp.eyebrow">compare</a>
+        <a href="#open" data-i18n="open.eyebrow">the prototype</a>
+        <a href="#faq" data-i18n="faq.eyebrow">questions</a>
+      </nav>
       <button class="btn btn-ghost btn-sm lang-btn" id="lang-toggle" type="button" aria-label="التبديل إلى العربية">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" aria-hidden="true">
@@ -64,43 +68,31 @@
 
   <main id="top">
 
-    <!-- HERO -->
-    <section class="hero" data-scroll-hero>
+    <!-- HERO: a glazed cobalt wall; the device sits on the tile X (the name's letter), whose crossing tile is gold -->
+    <section class="hero glaze" data-scroll-hero>
       <div class="hero-copy-wrap">
         <div class="wrap hero-grid">
           <div class="hero-copy">
-            <span class="eyebrow" data-i18n="hero.eyebrow">pre-launch · first batch</span>
             <h1 id="hero-h1"></h1>
             <p class="sub" id="hero-sub"></p>
             <div class="signup" data-form-slot="hero"></div>
             <ul class="trust-row">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg><span data-i18n="trust.1">No cloud</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg><span data-i18n="trust.2">No account</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg><span data-i18n="trust.3">No subscription</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  aria-hidden="true">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg><span data-i18n="trust.4">Source code you can read</span></li>
+              <li data-i18n="trust.1">No cloud</li>
+              <li data-i18n="trust.2">No account</li>
+              <li data-i18n="trust.3">No subscription</li>
             </ul>
           </div>
-          <div class="hero-visual">
-            <div class="photo-frame">
-              <picture>
-                <source srcset="assets/device.webp" type="image/webp">
-                <img src="assets/device.jpg" width="1600" height="1066"
-                  alt="The SecureSafeX device: a slim metal USB-C unit with a small screen showing a menu and four navigation buttons"
-                  data-i18n-alt="hero.alt" fetchpriority="high">
-              </picture>
-            </div>
+        </div>
+        <div class="hero-visual">
+          <svg class="tile-x" viewBox="0 0 15 15" aria-hidden="true" focusable="false"></svg>
+          <div class="photo-frame">
+            <picture>
+              <source srcset="assets/device.webp" type="image/webp">
+              <img src="assets/device.jpg" width="1600" height="1066"
+                alt="The SecureSafeX device: a slim metal USB-C unit with a small screen showing a menu and four navigation buttons"
+                data-i18n-alt="hero.alt" fetchpriority="high">
+            </picture>
+            <span class="photo-tag" data-i18n="hero.tag">working prototype</span>
           </div>
         </div>
         <span class="scroll-hint" data-i18n="scroll.hint" aria-hidden="true">scroll to look inside</span>
@@ -108,6 +100,7 @@
       <!-- Pinned 3D stage (3d/landing/viewer-scroll.ts); hidden unless the viewer mounts -->
       <div class="scroll-track">
         <div class="hero-stage">
+          <svg class="tile-x stage-x" viewBox="0 0 15 15" aria-hidden="true" focusable="false"></svg>
           <div class="stage-canvas"></div>
           <picture>
             <source srcset="assets/device.webp" type="image/webp"><img class="stage-photo" src="assets/device.jpg"
@@ -146,84 +139,111 @@
       </div>
     </section>
 
-    <!-- PROBLEM -->
+    <!-- PROBLEM: one wall of everyone's vaults, and the one tile that is not on it -->
     <section id="problem" data-section="problem">
       <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="problem.eyebrow">the problem</span>
-          <h2 data-i18n="problem.h2">Cloud password managers put everyone's vaults in one place</h2>
-          <p class="muted" data-i18n="problem.lead">They're convenient, and they're encrypted. But they also mean your
+        <div class="head">
+          <h2 class="rv" data-i18n="problem.h2">Cloud password managers put everyone's vaults in one place</h2>
+          <p class="rv lede" data-i18n="problem.lead">They're convenient, and they're encrypted. But they also mean your
             most sensitive data sits on servers you don't control, next to millions of other vaults.</p>
         </div>
-        <div class="cards">
-          <article class="card">
-            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <ellipse cx="12" cy="5" rx="8" ry="3" />
-                <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
-                <path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
-              </svg></div>
+
+        <div class="breach rv" id="breach">
+          <div class="breach-wall">
+            <div class="vaults" id="vaults" role="img" data-i18n-aria="demo.alt"
+              aria-label="A wall of vault tiles standing for a cloud manager's servers"></div>
+            <p class="breach-cap"><b data-i18n="demo.cloud">A cloud manager</b>
+              <span class="breach-state" id="wall-state" aria-live="polite"></span>
+            </p>
+          </div>
+          <div class="breach-you">
+            <div class="you-tile"><img src="assets/logo-mark.webp" width="96" height="96" alt=""></div>
+            <p class="breach-cap"><b data-i18n="demo.you">Your SecureSafeX</b>
+              <span class="breach-state" id="you-state" aria-live="polite"></span>
+            </p>
+          </div>
+          <button class="btn btn-primary breach-btn" id="breach-btn" type="button" data-i18n="demo.btn">Simulate a
+            breach</button>
+        </div>
+
+        <div class="claims">
+          <article class="claim rv">
             <h3 data-i18n="problem.c1.h">One target, millions of vaults</h3>
             <p data-i18n="problem.c1.p">A single server is worth attacking because of how much it holds. If encrypted
               vaults get copied, attackers can try to crack them offline for as long as they like.</p>
           </article>
-          <article class="card">
-            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" />
-                <path d="M12 17h.01" />
-              </svg></div>
+          <article class="claim rv">
             <h3 data-i18n="problem.c2.h">You have to trust what you can't see</h3>
             <p data-i18n="problem.c2.p">Their servers, their staff, their update pipeline, their next acquisition. You
               never see any of it, and your passwords depend on all of it.</p>
           </article>
-          <article class="card">
-            <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2" />
-                <path d="M16 2v4M8 2v4M3 10h18" />
-              </svg></div>
+          <article class="claim rv">
             <h3 data-i18n="problem.c3.h">Your access is a subscription</h3>
             <p data-i18n="problem.c3.p">Miss a payment, get locked out of the account, or the service changes its terms,
               and getting into your own passwords gets harder.</p>
           </article>
         </div>
-        <p class="callout" data-i18n="problem.callout">This isn't hypothetical. In 2022, attackers stole encrypted
+        <p class="callout rv" data-i18n="problem.callout">This isn't hypothetical. In 2022, attackers stole encrypted
           customer vault backups from a major cloud password manager. Users with weak master passwords are still exposed
           today.</p>
       </div>
     </section>
 
-    <!-- SOLUTION / HOW -->
-    <section id="how" data-section="how">
+    <div class="frieze" aria-hidden="true"></div>
+
+    <!-- SOLUTION / HOW: the device screen and its four keys work -->
+    <section id="how" class="field" data-section="how">
       <div class="wrap how-grid">
-        <div class="oled" role="img"
-          aria-label="Device screen showing a list of accounts with one selected, and a 2FA code"
-          data-i18n-aria="how.screen">
-          <div class="hdr"><span>VAULT</span><span>&#9632;&#9632;&#9632;&#9633;</span></div>
-          <div class="row"> github.com</div>
-          <div class="row sel" id="oled-sel">&gt; mail.google.com</div>
-          <div class="row"> bank-online</div>
-          <div class="row"> work-vpn</div>
-          <div class="foot">2FA 481 302 · 18s</div>
+        <div class="device rv" role="group" data-i18n-aria="how.screen"
+          aria-label="Device screen showing a list of accounts with one selected, and a 2FA code">
+          <div class="oled">
+            <div class="hdr"><span>VAULT</span><span>&#9632;&#9632;&#9632;&#9633;</span></div>
+            <div class="row">github.com</div>
+            <div class="row sel" id="oled-sel">mail.google.com</div>
+            <div class="row">bank-online</div>
+            <div class="row">work-vpn</div>
+            <div class="foot">2FA 481 302 · 18s</div>
+          </div>
+          <div class="keys">
+            <button class="key key-up" type="button" data-i18n-aria="key.up" aria-label="Up">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 15 6-6 6 6" />
+              </svg></button>
+            <button class="key key-down" type="button" data-i18n-aria="key.down" aria-label="Down">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" />
+              </svg></button>
+            <button class="key key-back" type="button" data-i18n-aria="key.back" aria-label="Back">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 14 4 9l5-5" />
+                <path d="M4 9h10a6 6 0 0 1 0 12h-3" />
+              </svg></button>
+            <button class="key key-ok" type="button" data-i18n-aria="key.ok" aria-label="Select">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+                <circle cx="12" cy="12" r="6" />
+              </svg></button>
+          </div>
+          <span class="led" aria-hidden="true"></span>
+          <span class="port" aria-hidden="true"></span>
         </div>
-        <div>
-          <span class="eyebrow" data-i18n="how.eyebrow">the alternative</span>
-          <h2 data-i18n="how.h2">A password vault you can hold in your hand</h2>
-          <p class="muted" data-i18n="how.lead">SecureSafeX is a small USB-C device that stores your passwords and 2FA
+        <div class="how-copy">
+          <h2 class="rv" data-i18n="how.h2">A password vault you can hold in your hand</h2>
+          <p class="rv lede" data-i18n="how.lead">SecureSafeX is a small USB-C device that stores your passwords and 2FA
             codes encrypted on the device itself. There's no server, no account, and nothing to sync.</p>
           <ol class="steps">
-            <li>
+            <li class="rv">
               <h3 data-i18n="how.s1.h">Unlock it on the device</h3>
               <p data-i18n="how.s1.p">You enter your PIN with the device's own buttons, so your computer never sees it.
               </p>
             </li>
-            <li>
+            <li class="rv">
               <h3 data-i18n="how.s2.h">Pick the account</h3>
               <p data-i18n="how.s2.p">Scroll to the login you need on the built-in screen.</p>
             </li>
-            <li>
+            <li class="rv">
               <h3 data-i18n="how.s3.h">Press, and it types for you</h3>
               <p data-i18n="how.s3.p">The device acts as a USB keyboard and types the username, the password, or both.
                 No drivers, no app.</p>
@@ -233,27 +253,16 @@
       </div>
     </section>
 
-    <!-- VALUE PILLARS (angle test) -->
+    <!-- VALUE PILLARS (angle test): the pillar matching the hero angle is glazed and first -->
     <section id="why" data-section="why">
       <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="why.eyebrow">why people want it</span>
-          <h2 data-i18n="why.h2">Private, secure, and easy to use</h2>
-          <p class="muted" data-i18n="why.lead">Tap the one that matters most to you. It helps us decide what to build
+        <div class="head">
+          <h2 class="rv" data-i18n="why.h2">Private, secure, and easy to use</h2>
+          <p class="rv lede" data-i18n="why.lead">Tap the one that matters most to you. It helps us decide what to build
             first.</p>
         </div>
         <div class="pillars" id="pillars">
-          <article class="pillar" data-pillar="privacy">
-            <svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <path d="M2 2l20 20" />
-              <path d="M8.5 16.4A6 6 0 0 1 12 15c1.3 0 2.5.4 3.5 1.1" />
-              <path d="M5 12.9a10 10 0 0 1 5.2-2.7" />
-              <path d="M19 12.9a10 10 0 0 0-2.3-1.7" />
-              <path d="M2 8.8a15 15 0 0 1 4.2-2.7" />
-              <path d="M10.7 5.1A15 15 0 0 1 22 8.8" />
-              <path d="M12 20h.01" />
-            </svg>
+          <article class="pillar rv" data-pillar="privacy">
             <h3 data-i18n="why.p.h">Private: it stays offline</h3>
             <ul>
               <li data-i18n="why.p.1">Your vault lives on the device, not on anyone's server</li>
@@ -263,12 +272,7 @@
             <button class="btn btn-ghost btn-sm vote" type="button" aria-pressed="false" data-vote="privacy"><span
                 data-i18n="why.vote">This matters most to me</span></button>
           </article>
-          <article class="pillar" data-pillar="security">
-            <svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <path d="m9 12 2 2 4-4" />
-            </svg>
+          <article class="pillar rv" data-pillar="security">
             <h3 data-i18n="why.s.h">Secure: built like a hardware wallet</h3>
             <ul>
               <li data-i18n="why.s.1">AES-256 encryption on a dedicated chip</li>
@@ -278,12 +282,7 @@
             <button class="btn btn-ghost btn-sm vote" type="button" aria-pressed="false" data-vote="security"><span
                 data-i18n="why.vote">This matters most to me</span></button>
           </article>
-          <article class="pillar" data-pillar="ease">
-            <svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <rect x="2" y="6" width="20" height="12" rx="2" />
-              <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8" />
-            </svg>
+          <article class="pillar rv" data-pillar="ease">
             <h3 data-i18n="why.e.h">Easy: works like a keyboard</h3>
             <ul>
               <li data-i18n="why.e.1">Import from Bitwarden, 1Password, Chrome and others</li>
@@ -297,14 +296,15 @@
       </div>
     </section>
 
+    <div class="frieze" aria-hidden="true"></div>
+
     <!-- COMPARE -->
-    <section id="compare" data-section="compare">
+    <section id="compare" class="field" data-section="compare">
       <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="cmp.eyebrow">compare</span>
-          <h2 data-i18n="cmp.h2">How it compares</h2>
+        <div class="head">
+          <h2 class="rv" data-i18n="cmp.h2">How it compares</h2>
         </div>
-        <div class="table-wrap">
+        <div class="table-wrap rv">
           <table>
             <thead>
               <tr>
@@ -357,43 +357,49 @@
       </div>
     </section>
 
-    <!-- BUILT IN THE OPEN -->
+    <!-- THE PROTOTYPE: a mosaic of unequal tiles -->
     <section id="open" data-section="open">
       <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="open.eyebrow">built in the open</span>
-          <h2 data-i18n="open.h2">The prototype already works. We're building the real thing.</h2>
-          <p class="muted" data-i18n="open.lead">SecureSafeX started as a maker project on the ESP32-S3. Anyone can
-            read the firmware. Your signup tells us whether to turn it into a finished, enclosed product.</p>
+        <div class="head">
+          <h2 class="rv" data-i18n="open.h2">The prototype already works. We're building the real thing.</h2>
+          <p class="rv lede" data-i18n="open.lead">SecureSafeX started as a maker project on the ESP32-S3. Your signup
+            tells us whether to turn it into a finished, enclosed product.</p>
         </div>
         <div class="open-grid">
-          <div class="spec"><b>ESP32-S3</b><span data-i18n="open.s1">Dedicated chip with hardware-accelerated
+          <div class="spec spec-chip rv"><b>ESP32-S3</b><span data-i18n="open.s1">Dedicated chip with
+              hardware-accelerated
               encryption</span></div>
-          <div class="spec"><b>USB-C HID</b><span data-i18n="open.s2">Shows up as a keyboard. No drivers needed.</span>
+          <div class="spec spec-port rv"><b>USB-C HID</b><span data-i18n="open.s2">Shows up as a keyboard. No drivers
+              needed.</span>
           </div>
-          <div class="spec"><b>TOTP 2FA</b><span data-i18n="open.s3">Generates your 2FA codes on the device</span></div>
-          <div class="spec"><b data-i18n="open.s4b">Readable code</b><span data-i18n="open.s4">The firmware is public,
-              so you can check it yourself</span></div>
+          <img class="spec-render rv" src="assets/layers.webp" width="900" height="975" loading="lazy"
+            alt="The four layers of the prototype pulled apart: aluminium shell with buttons, main board, secure chip and battery"
+            data-i18n-alt="open.render">
+          <img class="spec-usb rv" src="assets/usb-c.webp" width="600" height="600" loading="lazy"
+            alt="The braided USB-C cable and its plug, close to the device" data-i18n-alt="open.usb">
+          <div class="spec spec-totp rv"><b>TOTP 2FA</b><span data-i18n="open.s3">Generates your 2FA codes on the
+              device</span></div>
+          <a class="spec-video rv" href="https://www.youtube.com/watch?v=tpA8L6P6DDg" target="_blank" rel="noopener" data-track="video_click">
+            <span class="video-poster" role="img" aria-label="The prototype in use" data-i18n-aria="hero.alt"><svg
+                width="56" height="56" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg></span>
+            <b data-i18n="open.video">Watch the prototype demo</b>
+          </a>
         </div>
-        <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=tpA8L6P6DDg" target="_blank" rel="noopener"
-          data-track="video_click">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          <span data-i18n="open.video">Watch the prototype demo</span>
-        </a>
       </div>
     </section>
 
+    <div class="frieze" aria-hidden="true"></div>
+
     <!-- FAQ -->
-    <section id="faq" data-section="faq">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow" data-i18n="faq.eyebrow">questions</span>
-          <h2 data-i18n="faq.h2">The questions people ask first</h2>
+    <section id="faq" class="field" data-section="faq">
+      <div class="wrap faq-wrap">
+        <div class="faq-head">
+          <h2 class="rv" data-i18n="faq.h2">The questions people ask first</h2>
         </div>
         <div class="faq">
-          <details data-faq="lost">
+          <details data-faq="lost" class="rv">
             <summary><span data-i18n="faq.q1">What happens if I lose it?</span><svg width="20" height="20"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
@@ -402,7 +408,7 @@
               vault back, we're designing an encrypted backup, either to a second device or to an encrypted file you
               keep. When you sign up, you can tell us which one you'd prefer.</p>
           </details>
-          <details data-faq="offline">
+          <details data-faq="offline" class="rv">
             <summary><span data-i18n="faq.q2">Is it really offline?</span><svg width="20" height="20"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
@@ -412,7 +418,7 @@
               device and your computer. It never sends your vault to a server. If you want, Wi-Fi can also set the clock
               that 2FA codes depend on.</p>
           </details>
-          <details data-faq="import">
+          <details data-faq="import" class="rv">
             <summary><span data-i18n="faq.q3">How do my existing passwords get onto it?</span><svg width="20"
                 height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
@@ -421,7 +427,7 @@
               others), then import it through the companion browser extension while the device is in Manage mode. The
               device encrypts everything as it saves it.</p>
           </details>
-          <details data-faq="devices">
+          <details data-faq="devices" class="rv">
             <summary><span data-i18n="faq.q4">Will it work with my phone?</span><svg width="20" height="20"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
@@ -430,16 +436,17 @@
               many Android phones and iPads with USB-C. We're testing compatibility now, and Bluetooth is on the
               roadmap.</p>
           </details>
-          <details data-faq="trust">
+          <details data-faq="trust" class="rv">
             <summary><span data-i18n="faq.q5">Why should I trust a new device?</span><svg width="20" height="20"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
               </svg></summary>
-            <p data-i18n="faq.a5">You shouldn't have to take our word for it. The firmware is public, so you or anyone
-              you trust can read it. The design also removes the biggest risk on purpose: there's no server holding your
-              data, so there's nothing for us to leak.</p>
+            <p data-i18n="faq.a5">The design removes the biggest risk on purpose: there's no server holding your data,
+              so there's nothing for us to leak. Your vault is encrypted on the device and locked with a PIN you enter
+              on
+              the device itself.</p>
           </details>
-          <details data-faq="price">
+          <details data-faq="price" class="rv">
             <summary><span data-i18n="faq.q6">How much will it cost, and when will it ship?</span><svg width="20"
                 height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M12 5v14M5 12h14" />
@@ -452,17 +459,16 @@
       </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section id="join" class="final" data-section="join">
-      <div class="wrap">
+    <!-- FINAL CTA: the glazed wall again, the X behind the form -->
+    <section id="join" class="final glaze" data-section="join">
+      <svg class="tile-x" viewBox="0 0 15 15" aria-hidden="true" focusable="false"></svg>
+      <div class="wrap join-grid">
         <div class="section-head">
-          <img class="final-logo" src="assets/logo-full.webp" width="640" height="520" alt="SecureSafeX" loading="lazy">
-          <span class="eyebrow" data-i18n="join.eyebrow">first batch</span>
-          <h2 data-i18n="join.h2">Be first in line for SecureSafeX</h2>
-          <p class="muted" data-i18n="join.lead">Join the waitlist and we'll email you once, when the first batch is
+          <h2 class="rv" data-i18n="join.h2">Be first in line for SecureSafeX</h2>
+          <p class="rv lede" data-i18n="join.lead">Join the waitlist and we'll email you once, when the first batch is
             ready. No spam, and you can unsubscribe anytime.</p>
         </div>
-        <div class="signup" data-form-slot="final"></div>
+        <div class="signup rv" data-form-slot="final"></div>
       </div>
     </section>
 
@@ -470,8 +476,11 @@
 
   <footer>
     <div class="wrap">
-      <span><bdi class="ltr">© 2026 SecureSafeX</bdi> · <span data-i18n="footer.by">by Ali Hrhera</span></span>
-      <span data-i18n="footer.privacy">We only use your email for this waitlist. We never sell or share it.</span>
+      <p class="foot-mark" dir="ltr" aria-hidden="true">SecureSafe<span>X</span></p>
+      <div class="foot-meta">
+        <span><bdi class="ltr">© 2026 SecureSafeX</bdi> · <span data-i18n="footer.by">by Ali Hrhera</span></span>
+        <span data-i18n="footer.privacy">We only use your email for this waitlist. We never sell or share it.</span>
+      </div>
     </div>
   </footer>
 
@@ -563,7 +572,7 @@
     </form>
   </template>
 
-  <script src="assets/js/home.js?v=20261004-14.05" defer></script>
+  <script src="assets/js/home.js?v=20261024-1" defer></script>
   <!-- Scroll-pinned 3D hero: bundle built from 3d/ (tools/build-landing.sh); static hero is the fallback -->
   <script src="assets/3d/securex-scroll.js" defer></script>
 </body>
