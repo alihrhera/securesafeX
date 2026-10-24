@@ -2,6 +2,7 @@
 // Arabic direction so visitors never see a flash of the wrong one.
 (function () {
     var root = document.documentElement, theme;
+    root.classList.add("js");
     try {
         var q = new URLSearchParams(location.search).get("lang");
         var l = q || JSON.parse(localStorage.getItem("sx_lang") || "null") || ((navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en");

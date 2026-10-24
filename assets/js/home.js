@@ -42,7 +42,16 @@ const I18N = {
         "scroll.5.h": "Small device. Your data, your control.",
         "scroll.5.p": "Everything you just saw stays in your pocket.",
         "hero.inside": "see inside", "hero.closeup": "close it up",
-        "trust.1": "No cloud", "trust.2": "No account", "trust.3": "No subscription", "trust.4": "Source code you can read",
+        "nav.label": "Sections",
+        "open.render": "The four layers of the prototype pulled apart: aluminium shell with buttons, main board, secure chip and battery",
+        "open.usb": "The braided USB-C cable and its plug, close to the device",
+        "demo.alt": "A wall of vault tiles standing for a cloud manager's servers",
+        "demo.cloud": "A cloud manager", "demo.you": "Your SecureSafeX",
+        "demo.btn": "Simulate a breach", "demo.reset": "Reset the demo",
+        "demo.hit": "Every vault on the wall is copied at once.", "demo.safe": "Nothing to copy. There's no server.",
+        "demo.note": "An illustration, not real data.",
+        "key.up": "Up", "key.down": "Down", "key.back": "Back", "key.ok": "Select",
+        "trust.1": "No cloud", "trust.2": "No account", "trust.3": "No subscription",
         "problem.eyebrow": "the problem",
         "problem.h2": "Cloud password managers put everyone's vaults in one place",
         "problem.lead": "They're convenient, and they're encrypted. But they also mean your most sensitive data sits on servers you don't control, next to millions of other vaults.",
@@ -75,17 +84,17 @@ const I18N = {
         "cmp.r5": "Safe if someone steals it", "cmp.r5a": "Depends on your master password", "cmp.r5c": "Encrypted and PIN-locked",
         "cmp.r6": "What you pay", "cmp.r6a": "A monthly subscription", "cmp.r6b": "Nothing", "cmp.r6c": "A one-time purchase",
         "yes": "Yes", "no": "No",
-        "open.eyebrow": "built in the open",
+        "open.eyebrow": "the prototype",
         "open.h2": "The prototype already works. We're building the real thing.",
-        "open.lead": "SecureSafeX started as a maker project on the ESP32-S3. Anyone can read the firmware. Your signup tells us whether to turn it into a finished, enclosed product.",
-        "open.s1": "Dedicated chip with hardware-accelerated encryption", "open.s2": "Shows up as a keyboard. No drivers needed.", "open.s3": "Generates your 2FA codes on the device", "open.s4b": "Readable code", "open.s4": "The firmware is public, so you can check it yourself",
+        "open.lead": "SecureSafeX started as a maker project on the ESP32-S3. Your signup tells us whether to turn it into a finished, enclosed product.",
+        "open.s1": "Dedicated chip with hardware-accelerated encryption", "open.s2": "Shows up as a keyboard. No drivers needed.", "open.s3": "Generates your 2FA codes on the device",
         "open.video": "Watch the prototype demo",
         "faq.eyebrow": "questions", "faq.h2": "The questions people ask first",
         "faq.q1": "What happens if I lose it?", "faq.a1": "Whoever finds it gets an encrypted, PIN-locked device, not your passwords. To get your vault back, we're designing an encrypted backup, either to a second device or to an encrypted file you keep. When you sign up, you can tell us which one you'd prefer.",
         "faq.q2": "Is it really offline?", "faq.a2": "In daily use, yes. It talks to your computer only as a USB keyboard. Wi-Fi turns on only when you pick Manage mode to import or edit, and then it runs its own private hotspot between the device and your computer. It never sends your vault to a server. If you want, Wi-Fi can also set the clock that 2FA codes depend on.",
         "faq.q3": "How do my existing passwords get onto it?", "faq.a3": "Export a CSV file from your current manager (Bitwarden, 1Password, Chrome, and others), then import it through the companion browser extension while the device is in Manage mode. The device encrypts everything as it saves it.",
         "faq.q4": "Will it work with my phone?", "faq.a4": "It should work with anything that accepts a USB keyboard: Windows, macOS, Linux, and many Android phones and iPads with USB-C. We're testing compatibility now, and Bluetooth is on the roadmap.",
-        "faq.q5": "Why should I trust a new device?", "faq.a5": "You shouldn't have to take our word for it. The firmware is public, so you or anyone you trust can read it. The design also removes the biggest risk on purpose: there's no server holding your data, so there's nothing for us to leak.",
+        "faq.q5": "Why should I trust a new device?", "faq.a5": "The design removes the biggest risk on purpose: there's no server holding your data, so there's nothing for us to leak. Your vault is encrypted on the device and locked with a PIN you enter on the device itself.",
         "faq.q6": "How much will it cost, and when will it ship?", "faq.a6": "We haven't set a price yet. What you tell us in the signup form will shape it. It will be a one-time purchase with no subscription, and people on the waitlist get first access to the first batch.",
         "join.eyebrow": "first batch", "join.h2": "Be first in line for SecureSafeX",
         "join.lead": "Join the waitlist and we'll email you once, when the first batch is ready. No spam, and you can unsubscribe anytime.",
@@ -132,7 +141,16 @@ const I18N = {
         "scroll.5.h": "جهاز صغير. بياناتك تحت سيطرتك.",
         "scroll.5.p": "كل ما رأيته للتو يبقى في جيبك.",
         "hero.inside": "شاهد من الداخل", "hero.closeup": "أعد التجميع",
-        "trust.1": "بلا سحابة", "trust.2": "بلا حساب", "trust.3": "بلا اشتراك", "trust.4": "كود مصدري مفتوح للاطلاع",
+        "nav.label": "الأقسام",
+        "open.render": "الطبقات الأربع للنموذج الأولي منفصلة: الهيكل المعدني بأزراره، واللوحة الرئيسية، والشريحة الآمنة، والبطارية",
+        "open.usb": "كابل USB-C المجدول ورأسه بجوار الجهاز",
+        "demo.alt": "جدار من بلاطات الخزائن يمثّل خوادم مدير كلمات مرور سحابي",
+        "demo.cloud": "مدير سحابي", "demo.you": "جهازك SecureSafeX",
+        "demo.btn": "جرّب محاكاة اختراق", "demo.reset": "أعد المحاكاة",
+        "demo.hit": "تُنسخ كل خزائن الجدار دفعة واحدة.", "demo.safe": "لا شيء يُنسخ. لا يوجد خادم.",
+        "demo.note": "توضيح فقط وليست بيانات حقيقية.",
+        "key.up": "أعلى", "key.down": "أسفل", "key.back": "رجوع", "key.ok": "اختيار",
+        "trust.1": "بلا سحابة", "trust.2": "بلا حساب", "trust.3": "بلا اشتراك",
         "problem.eyebrow": "المشكلة",
         "problem.h2": "مديرات كلمات المرور السحابية تجمع خزائن الجميع في مكان واحد",
         "problem.lead": "صحيح أنها مريحة ومشفّرة، لكن أكثر بياناتك حساسيةً تبقى على خوادم لا تتحكم بها، إلى جانب ملايين الخزائن الأخرى.",
@@ -165,17 +183,17 @@ const I18N = {
         "cmp.r5": "آمن إذا سُرق", "cmp.r5a": "يعتمد على كلمة مرورك الرئيسية", "cmp.r5c": "مشفّر ومقفل برمز سري",
         "cmp.r6": "ماذا تدفع", "cmp.r6a": "اشتراك شهري", "cmp.r6b": "لا شيء", "cmp.r6c": "شراء لمرة واحدة",
         "yes": "نعم", "no": "لا",
-        "open.eyebrow": "نبنيه بشفافية",
+        "open.eyebrow": "النموذج الأولي",
         "open.h2": "النموذج الأولي يعمل الآن، ونحن نبني المنتج النهائي.",
-        "open.lead": "بدأ SecureSafeX مشروعًا مستقلًا على شريحة ESP32-S3، وبرنامجه الثابت متاح لأي شخص للاطلاع عليه. وتسجيلك هو ما يخبرنا إن كان علينا تحويله إلى منتج نهائي متكامل.",
-        "open.s1": "شريحة مخصّصة مع تشفير مسرَّع عتاديًا", "open.s2": "يتعرّف عليه الحاسوب كلوحة مفاتيح، دون تعريفات", "open.s3": "يولّد رموز التحقق الثنائي على الجهاز", "open.s4b": "كود مقروء", "open.s4": "البرنامج الثابت منشور، فتستطيع مراجعته بنفسك",
+        "open.lead": "بدأ SecureSafeX مشروعًا مستقلًا على شريحة ESP32-S3، وتسجيلك هو ما يخبرنا إن كان علينا تحويله إلى منتج نهائي متكامل.",
+        "open.s1": "شريحة مخصّصة مع تشفير مسرَّع عتاديًا", "open.s2": "يتعرّف عليه الحاسوب كلوحة مفاتيح، دون تعريفات", "open.s3": "يولّد رموز التحقق الثنائي على الجهاز",
         "open.video": "شاهد عرض النموذج الأولي",
         "faq.eyebrow": "أسئلة", "faq.h2": "أكثر الأسئلة شيوعًا",
         "faq.q1": "ماذا لو فقدته؟", "faq.a1": "من يجده يحصل على جهاز مشفّر ومقفل برمز سري، لا على كلمات مرورك. ولاسترجاع خزنتك نصمّم نسخة احتياطية مشفّرة، إما على جهاز ثانٍ أو في ملف مشفّر تحتفظ به. يمكنك أن تخبرنا عند التسجيل أيهما تفضّل.",
         "faq.q2": "هل هو فعلًا بلا إنترنت؟", "faq.a2": "في الاستخدام اليومي، نعم. يتصل بحاسوبك كلوحة مفاتيح USB فقط. ولا تعمل شبكة Wi-Fi إلا عندما تختار وضع الإدارة للاستيراد أو التعديل، وحينها يشغّل شبكة خاصة بينه وبين حاسوبك فقط، ولا يرسل خزنتك إلى أي خادم. ويمكنك أيضًا استخدامها لضبط الساعة التي تعتمد عليها رموز التحقق الثنائي إن أردت.",
         "faq.q3": "كيف أنقل كلمات مروري الحالية إليه؟", "faq.a3": "صدّر ملف CSV من مديرك الحالي (Bitwarden أو 1Password أو Chrome وغيرها)، ثم استورده عبر إضافة المتصفح المرافقة والجهاز في وضع الإدارة. يشفّر الجهاز كل شيء أثناء الحفظ.",
         "faq.q4": "هل يعمل مع هاتفي؟", "faq.a4": "يُفترض أن يعمل مع أي جهاز يقبل لوحة مفاتيح USB: ويندوز وماك ولينكس، وكثير من هواتف أندرويد وأجهزة iPad بمنفذ USB-C. نختبر التوافق الآن، والبلوتوث ضمن خطتنا.",
-        "faq.q5": "لماذا أثق بجهاز جديد؟", "faq.a5": "لا نطلب منك أن تكتفي بكلامنا. البرنامج الثابت منشور، فتستطيع أنت أو أي شخص تثق به مراجعته. والتصميم يزيل الخطر الأكبر عمدًا: لا يوجد خادم يحمل بياناتك، فلا يوجد ما يمكن أن نسرّبه.",
+        "faq.q5": "لماذا أثق بجهاز جديد؟", "faq.a5": "التصميم يزيل الخطر الأكبر عمدًا: لا يوجد خادم يحمل بياناتك، فلا يوجد ما يمكن أن نسرّبه. وخزنتك مشفّرة على الجهاز ومقفلة برمز سري تُدخله على الجهاز نفسه.",
         "faq.q6": "كم سيكلّف ومتى سيصل؟", "faq.a6": "لم نحدّد السعر بعد، وإجاباتك في نموذج التسجيل ستحدّده. سيكون شراءً لمرة واحدة بلا اشتراك، ومن في قائمة الانتظار يحصلون على أولوية الوصول إلى الدفعة الأولى.",
         "join.eyebrow": "الدفعة الأولى", "join.h2": "كن من أوائل من يحصلون على SecureSafeX",
         "join.lead": "انضم إلى قائمة الانتظار وسنراسلك مرة واحدة عندما تجهز الدفعة الأولى. بلا رسائل مزعجة، ويمكنك إلغاء الاشتراك متى شئت.",
@@ -249,6 +267,11 @@ function applyLang() {
     label.lang = lang === "ar" ? "en" : "ar";
     toggle.setAttribute("aria-label", t("lang.switch"));
     updateThemeButton();
+    // Layer names read "01 · shell": the captions already arrive in order, so only the part name is shown.
+    document.querySelectorAll(".cap-k").forEach(el => { el.textContent = el.textContent.replace(/^[0-9\u0660-\u0669]+\s*·\s*/, ""); });
+    // Comparison cells carry their column name for the stacked mobile layout.
+    const heads = [...document.querySelectorAll("#compare thead th")].map(h => h.textContent.trim());
+    document.querySelectorAll("#compare tbody tr").forEach(tr => [...tr.children].forEach((cell, i) => { if (cell.tagName === "TD") cell.dataset.l = heads[i]; }));
     document.querySelectorAll(".done-msg span").forEach(el => { el.textContent = t("s2.title") + " " + t("s2.done"); });
     document.querySelectorAll(".vote").forEach(b => {
         b.querySelector("span").textContent = t(b.getAttribute("aria-pressed") === "true" ? "why.voted" : "why.vote");
@@ -440,16 +463,154 @@ document.querySelectorAll("[data-section]").forEach(s => io.observe(s));
 
 // Sticky CTA on mobile: shown after the hero, hidden once the final form is visible.
 const sticky = document.getElementById("sticky-cta");
-let heroOut = false, joinIn = false;
-const upd = () => { const show = heroOut && !joinIn && !signupEmail; sticky.classList.toggle("show", show); sticky.setAttribute("aria-hidden", String(!show)); sticky.querySelector("a").tabIndex = show ? 0 : -1; };
+let heroOut = false, joinIn = false, pinned = false;
+const upd = () => { const show = heroOut && !joinIn && !pinned && !signupEmail; sticky.classList.toggle("show", show); sticky.setAttribute("aria-hidden", String(!show)); sticky.querySelector("a").tabIndex = show ? 0 : -1; };
 new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }).observe(document.querySelector(".hero-copy-wrap"));
 new IntersectionObserver(([e]) => { joinIn = e.isIntersecting; upd(); }).observe(document.getElementById("join"));
+// While the pinned 3D stage is on screen it carries its own call to action (mobile captions sit where this bar does).
+new IntersectionObserver(([e]) => { pinned = e.isIntersecting; upd(); }).observe(document.querySelector(".scroll-track"));
 
-// Small "live" touch on the screen mock (skipped for reduced motion).
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const rows = [...document.querySelectorAll(".oled .row")]; let i = 1;
-    setInterval(() => { rows.forEach(r => { r.classList.remove("sel"); r.textContent = "  " + r.textContent.trim().replace(/^>\s*/, ""); }); i = (i + 1) % rows.length; rows[i].classList.add("sel"); rows[i].textContent = "> " + rows[i].textContent.trim(); }, 1800);
-}
+/* ===================== THE TILE X ===================== */
+// The name's letter drawn as banna'i staircase diagonals: three tiles wide, the crossing tile is gold
+// (yours) and sits behind the device. Same cell grid as the vault wall below.
+document.querySelectorAll(".tile-x").forEach(svg => {
+    const n = 15, mid = (n - 1) / 2; let out = "";
+    for (let r = 0; r < n; r++) for (let q = 0; q < n; q++) {
+        const d = Math.min(Math.abs(q - r), Math.abs(q + r - (n - 1)));
+        if (d > 1) continue;
+        const cls = r === mid && q === mid ? "xg" : d === 0 ? "xa" : "xb";
+        out += `<rect class="${cls}" x="${q + .06}" y="${r + .06}" width=".88" height=".88"/>`;
+    }
+    svg.innerHTML = out;
+});
+
+// While the 3D hero is pinned the X follows the device: same ramps, same easing as securex-scroll.js.
+(function () {
+    const hero = document.querySelector("[data-scroll-hero]");
+    const track = hero && hero.querySelector(".scroll-track");
+    if (!track || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ramp = (x, a, b) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+    const wide = matchMedia("(min-width: 901px)");
+    const forced = /#p=([\d.]+)/.exec(location.hash); // review hook shared with securex-scroll.js
+    let p = forced ? Number(forced[1]) : 0, visible = true;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(track);
+    (function frame() {
+        if (visible && hero.classList.contains("scroll-3d")) {
+            const r = track.getBoundingClientRect(), span = r.height - innerHeight;
+            if (!forced) p += ((span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0) - p) * 0.14;
+            const a = ramp(p, 0.04, 0.3), e = ramp(p, 0.34, 0.58) * (1 - ramp(p, 0.86, 0.98));
+            const side = document.documentElement.dir === "rtl" ? -1 : 1;
+            hero.style.setProperty("--xs", wide.matches ? (side * (0.22 * (1 - a) + 0.1 * e)).toFixed(4) : "0");
+            hero.style.setProperty("--xe", e.toFixed(3));
+        }
+        requestAnimationFrame(frame);
+    })();
+})();
+
+/* ===================== THE WALL OF VAULTS (live demo) ===================== */
+// A cloud manager is one wall of everyone's vaults: breach it and every tile goes at once, in a wave
+// from one cell. The gold tile, yours, is not on the wall. Illustration only; the counts are tiles.
+(function () {
+    const box = document.getElementById("breach"), wall = document.getElementById("vaults");
+    if (!box || !wall) return;
+    const btn = document.getElementById("breach-btn"), wallState = document.getElementById("wall-state"), youState = document.getElementById("you-state");
+    const narrow = matchMedia("(max-width: 900px)");
+    let cols = 0;
+    function build() {
+        const c = narrow.matches ? 14 : 24, rows = narrow.matches ? 9 : 10;
+        if (c === cols) return; cols = c;
+        wall.style.setProperty("--cols", c);
+        wall.replaceChildren(...Array.from({ length: c * rows }, () => document.createElement("i")));
+        aim();
+    }
+    // Each breach starts from a different cell; --d is how many steps a tile is from it.
+    function aim() {
+        const c = cols, cells = [...wall.children], rows = cells.length / c;
+        const ox = Math.floor(Math.random() * c), oy = Math.floor(Math.random() * rows);
+        cells.forEach((cell, i) => cell.style.setProperty("--d", Math.round(Math.hypot((i % c) - ox, Math.floor(i / c) - oy))));
+    }
+    function paint() {
+        const hit = box.classList.contains("hit");
+        btn.textContent = t(hit ? "demo.reset" : "demo.btn");
+        wallState.textContent = hit ? t("demo.hit") : "";
+        youState.textContent = hit ? t("demo.safe") : "";
+    }
+    btn.addEventListener("click", () => {
+        if (!box.classList.contains("hit")) aim();
+        const hit = box.classList.toggle("hit");
+        paint();
+        if (hit) track("breach_demo");
+    });
+    narrow.addEventListener ? narrow.addEventListener("change", build) : narrow.addListener(build);
+    build();
+    document.getElementById("lang-toggle").addEventListener("click", paint);
+    paint();
+})();
+
+/* ===================== THE DEVICE (working keys) ===================== */
+(function () {
+    const dev = document.querySelector(".device");
+    if (!dev) return;
+    const rows = [...dev.querySelectorAll(".oled .row")];
+    let i = rows.findIndex(r => r.classList.contains("sel")), typing = 0;
+    const label = rows.map(r => r.textContent);
+    const show = n => { i = (n + rows.length) % rows.length; rows.forEach((r, k) => { r.classList.toggle("sel", k === i); r.textContent = label[k]; }); };
+    dev.querySelector(".key-up").addEventListener("click", () => { clearTimeout(typing); dev.classList.remove("typed"); show(i - 1); });
+    dev.querySelector(".key-down").addEventListener("click", () => { clearTimeout(typing); dev.classList.remove("typed"); show(i + 1); });
+    dev.querySelector(".key-back").addEventListener("click", () => { clearTimeout(typing); dev.classList.remove("typed"); show(0); });
+    // Select "types" the login: the row shows the dots a keyboard would send, the LED turns gold, then it resets.
+    dev.querySelector(".key-ok").addEventListener("click", () => {
+        clearTimeout(typing); dev.classList.add("typed"); rows[i].textContent = "\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022";
+        typing = setTimeout(() => { dev.classList.remove("typed"); show(i); }, 1400);
+    });
+    // Idle: walk the selection down the list until a visitor takes over (skipped for reduced motion).
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const walk = setInterval(() => { if (!dev.classList.contains("typed")) show(i + 1); }, 2200);
+        dev.addEventListener("pointerdown", () => clearInterval(walk), { once: true });
+        dev.addEventListener("focusin", () => clearInterval(walk), { once: true });
+    }
+})();
+
+/* ===================== FRIEZE ===================== */
+// A two-row band of the glazed wall between sections: a diamond lattice of lighter tiles on cobalt.
+(function () {
+    const bands = [...document.querySelectorAll(".frieze")];
+    if (!bands.length) return;
+    let lastW = 0;
+    function build() {
+        const w = document.documentElement.clientWidth;
+        if (w === lastW) return; lastW = w;
+        const size = Math.round(Math.min(52, Math.max(28, w * 0.034)));
+        const cols = Math.max(4, Math.floor((w + 4) / (size + 4)));
+        bands.forEach(band => {
+            band.style.setProperty("--ft", size + "px");
+            band.style.gridTemplateColumns = `repeat(${cols}, ${size}px)`;
+            band.replaceChildren(...Array.from({ length: cols * 2 }, (_, i) => {
+                const r = Math.floor(i / cols), q = i % cols, cell = document.createElement("i");
+                if ((q + r) % 4 === 0 || ((q - r) % 4 + 4) % 4 === 0) cell.className = "a";
+                return cell;
+            }));
+        });
+    }
+    build();
+    addEventListener("resize", () => { lastW = 0; build(); });
+})();
+
+/* ===================== REVEAL ===================== */
+// Parts arrive once as they enter; without script (or with reduced motion) everything is simply there.
+(function () {
+    const els = [...document.querySelectorAll(".rv")];
+    if (!("IntersectionObserver" in window)) { els.forEach(e => e.classList.add("in")); return; }
+    const io2 = new IntersectionObserver(entries => entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        io2.unobserve(en.target); en.target.classList.add("in");
+    }), { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+    els.forEach(e => {
+        const sib = [...e.parentElement.children].filter(x => x.classList.contains("rv"));
+        e.style.setProperty("--i", Math.min(sib.indexOf(e), 4));
+        io2.observe(e);
+    });
+})();
 
 applyLang();
 track("page_view", { utm_source: utm.utm_source || "direct" });
