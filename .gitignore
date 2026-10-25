@@ -51,3 +51,10 @@ CODEBUDDY.md
 GEMINI.md
 QODER.md
 user-data/
+
+# Design-tool context and sidecars (not part of the site)
+.github/
+.impeccable/
+DESIGN.md
+PRODUCT.md
+assets/*.webp.json
