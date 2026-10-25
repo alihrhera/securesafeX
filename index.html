@@ -4,21 +4,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SecureSafeX — the password manager you can hold</title>
+  <title>SecureSafeX: the password manager you can hold</title>
   <meta name="description"
-    content="A pocket-sized hardware password manager. Your vault stays encrypted on the device — offline, no account, no cloud. Join the waitlist.">
-  <meta property="og:title" content="SecureSafeX — the password manager you can hold">
+    content="A pocket-sized hardware password manager. Your vault stays encrypted on the device: offline, no account, no cloud. Join the waitlist.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://securesafex.pollenbyte.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SecureSafeX">
+  <meta property="og:url" content="https://securesafex.pollenbyte.com/">
+  <meta property="og:title" content="SecureSafeX: the password manager you can hold">
   <meta property="og:description" content="Offline, account-free, cloud-free. Join the waitlist for the first batch.">
-  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image" content="https://securesafex.pollenbyte.com/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The SecureSafeX device: a slim metal USB-C password manager">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SecureSafeX: the password manager you can hold">
+  <meta name="twitter:description" content="Offline, account-free, cloud-free. Join the waitlist for the first batch.">
+  <meta name="twitter:image" content="https://securesafex.pollenbyte.com/assets/og-image.jpg">
   <meta name="theme-color" content="#121418">
   <meta name="color-scheme" content="dark light">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="alternate" hreflang="en" href="?lang=en">
-  <link rel="alternate" hreflang="ar" href="?lang=ar">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://securesafex.pollenbyte.com/#org",
+        "name": "SecureSafeX",
+        "url": "https://securesafex.pollenbyte.com/",
+        "logo": "https://securesafex.pollenbyte.com/assets/logo-full.webp",
+        "founder": {
+          "@type": "Person",
+          "name": "Ali Hrhera"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://securesafex.pollenbyte.com/#site",
+        "url": "https://securesafex.pollenbyte.com/",
+        "name": "SecureSafeX",
+        "inLanguage": [
+          "en",
+          "ar"
+        ],
+        "publisher": {
+          "@id": "https://securesafex.pollenbyte.com/#org"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What happens if I lose it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Whoever finds it gets an encrypted, PIN-locked device, not your passwords. To get your vault back, we're designing an encrypted backup, either to a second device or to an encrypted file you keep. When you sign up, you can tell us which one you'd prefer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it really offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In daily use, yes. It talks to your computer only as a USB keyboard. Wi-Fi turns on only when you pick Manage mode to import or edit, and then it runs its own private hotspot between the device and your computer. It never sends your vault to a server. If you want, Wi-Fi can also set the clock that 2FA codes depend on."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do my existing passwords get onto it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Export a CSV file from your current manager (Bitwarden, 1Password, Chrome, and others), then import it through the companion browser extension while the device is in Manage mode. The device encrypts everything as it saves it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will it work with my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It should work with anything that accepts a USB keyboard: Windows, macOS, Linux, and many Android phones and iPads with USB-C. We're testing compatibility now, and Bluetooth is on the roadmap."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why should I trust a new device?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The design removes the biggest risk on purpose: there's no server holding your data, so there's nothing for us to leak. Your vault is encrypted on the device and locked with a PIN you enter on the device itself."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much will it cost, and when will it ship?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We haven't set a price yet. What you tell us in the signup form will shape it. It will be a one-time purchase with no subscription, and people on the waitlist get first access to the first batch."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <script src="assets/js/boot.js?v=20261024-1"></script>
   <link rel="preload" href="assets/fonts/reem-kufi-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/cairo-arabic.woff2" as="font" type="font/woff2" crossorigin>
@@ -73,8 +164,8 @@
       <div class="hero-copy-wrap">
         <div class="wrap hero-grid">
           <div class="hero-copy">
-            <h1 id="hero-h1"></h1>
-            <p class="sub" id="hero-sub"></p>
+            <h1 id="hero-h1">Your passwords belong in your pocket, not someone's cloud.</h1>
+            <p class="sub" id="hero-sub">SecureSafeX is a pocket-sized password manager that keeps your vault encrypted on the device itself: offline, with no account, and out of reach of any server breach.</p>
             <div class="signup" data-form-slot="hero"></div>
             <ul class="trust-row">
               <li data-i18n="trust.1">No cloud</li>
@@ -379,13 +470,6 @@
             alt="The braided USB-C cable and its plug, close to the device" data-i18n-alt="open.usb">
           <div class="spec spec-totp rv"><b>TOTP 2FA</b><span data-i18n="open.s3">Generates your 2FA codes on the
               device</span></div>
-          <a class="spec-video rv" href="#" target="_blank" rel="noopener" data-track="video_click">
-            <span class="video-poster" role="img" aria-label="The prototype in use" data-i18n-aria="hero.alt"><svg
-                width="56" height="56" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg></span>
-            <b data-i18n="open.video">Watch the prototype demo</b>
-          </a>
         </div>
       </div>
     </section>

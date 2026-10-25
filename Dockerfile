@@ -15,7 +15,7 @@ COPY server/src ./src
 # Copy static assets to root (assets/ includes the 3d/ subfolder)
 WORKDIR /app
 COPY assets ./assets
-COPY index.html .
+COPY index.html robots.txt sitemap.xml ./
 
 # Create data directory for waitlist signups
 RUN mkdir -p /app/data
