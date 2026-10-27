@@ -441,7 +441,15 @@ function mountDetails(slot) {
         const fd = new FormData(form);
         const details = { persona: fd.get("persona"), features: fd.getAll("features"), price: fd.get("price"), worry: (fd.get("worry") || "").trim() };
         const btn = form.querySelector("button[type=submit]"); btn.disabled = true;
-        try { await send({ stage: "details", email: signupEmail, token: store.get("sx_token"), ...details }); } catch (_) { }
+        try {
+            const res = await send({ stage: "details", email: signupEmail, token: store.get("sx_token"), ...details });
+            // The API answers 200 without a record when it ignored the answers (e.g. this email signed up before, so the token doesn't match).
+            if (CONFIG.endpoint && !res.record) throw new Error("not_saved");
+        } catch (_) {
+            let err = form.querySelector(".form-error");
+            if (!err) { err = document.createElement("p"); err.className = "form-error"; err.setAttribute("role", "alert"); btn.after(err); }
+            err.textContent = t("form.err.net"); btn.disabled = false; return;
+        }
         store.set("sx_details_done", true);
         track("waitlist_details", { persona: details.persona || "none", features: details.features.join(","), price: details.price || "none", has_worry: !!details.worry });
         document.querySelectorAll("[data-form-slot]").forEach(s => mountDetails(s));
